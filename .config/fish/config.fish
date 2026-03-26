@@ -37,5 +37,5 @@ end
 
 # This makes the word 'code' silent without an alias
 function code
-    command code $argv 2>/dev/null
+    command code -r --quiet $argv 2>/dev/null
 end

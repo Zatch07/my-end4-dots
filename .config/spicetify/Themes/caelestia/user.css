@@ -1,0 +1,368 @@
+/* ============================================================
+   DELUXIFIED CAELESTIA — Matugen Colors Reimagined
+   All specific colors have been exposed via comments so you
+   can easily find and tweak them.
+   ============================================================ */
+
+
+/* ── 1. The Core Background Gradient ─────────────────────────── */
+/* 
+   [CHANGE COLOR HERE]: Background Gradient Settings 
+   This gradient is drawn behind everything in the app.
+   Change the top color (currently a 15% opacity of the button color)
+   and the bottom color (currently the main dark color).
+*/
+#main,
+.Root__top-container {
+    background: linear-gradient(180deg, rgba(var(--spice-rgb-button), 0.15) 0%, var(--spice-main) 100%) fixed no-repeat !important;
+    transition: background 1s ease-in-out !important;
+}
+
+/* Make all the modern Spotify floating boxes transparent so the gradient bleeds through everywhere */
+.main-view-container,
+.main-view-container__scroll-node,
+.main-view-container__scroll-node-child,
+.Root__main-view,
+.Root__nav-bar,
+.Root__right-sidebar,
+.main-yourLibraryX-entryPoints,
+.main-yourLibraryX-background,
+.main-navBar-navBar,
+.encore-dark-theme,
+.encore-dark-theme .encore-base-set {
+    background: transparent !important;
+    background-color: transparent !important;
+    --background-base: transparent !important;
+}
+
+/* ── 2. The Header Overlay & Blurs ───────────────────────────── */
+
+/* 
+   [CHANGE COLOR HERE]: Top Sticky Header Bar
+   This is the bar that appears when you scroll down past the playlist cover.
+   (Opacity is naturally handled by Spotify when scrolling, so don't force it to 1)
+*/
+.main-topBar-background {
+    background: rgba(var(--spice-rgb-main), 0.95) !important;
+    transition: background 1.5s ease, opacity 0.5s ease !important;
+}
+
+/* Un-hide sticky header functionality */
+.main-entityHeader-background.main-entityHeader-overlay::after,
+.main-view-container__scroll-node-child div[style*="--background-base"]:not([style*="--background-base-min-contrast"]) {
+    display: none !important;
+    background: transparent !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Internal sticky header fallback colors
+*/
+.main-entityHeader-backgroundColor,
+.main-actionBarBackground-background {
+    background-color: var(--spice-main) !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Playlist Cover Gradient (Top)
+   The shadow running up over the top header.
+*/
+.main-entityHeader-container.main-entityHeader-withBackgroundImage {
+    background: linear-gradient(360deg, rgba(var(--spice-rgb-main), 0.8), transparent) !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Playlist / Artist Blurred Area 
+   This box wraps the list of items. It has a blurry frosted glass effect.
+*/
+.playlist-playlist-playlistContent,
+.artist-artistOverview-artistOverviewContent {
+    background: rgba(var(--spice-rgb-main), 0.2) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Transition fading gradient connecting header to the list bounds 
+*/
+.main-entityHeader-withBackgroundImage+div {
+    background: linear-gradient(180deg, rgba(var(--spice-rgb-main), 0.4) 0%, transparent 100%) fixed no-repeat !important;
+    transition: background 1s ease-in-out !important;
+}
+
+/* ── 3. Cards & Text ─────────────────────────────────────────── */
+/* 
+   [CHANGE COLOR HERE]: Square Cards (Home page, recent playlists)
+   This is the semi-transparent box.
+*/
+.main-card-card {
+    background: rgba(var(--spice-rgb-card), 0.4) !important;
+    border-radius: 12px !important;
+    transition: background 300ms ease !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Card Hover State Color
+*/
+.main-card-card:hover {
+    background: rgba(var(--spice-rgb-card), 0.8) !important;
+}
+
+.main-cardImage-circular,
+.main-cardImage-image,
+.main-cardImage-imageWrapper {
+    border-radius: 12px !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Global Text colors
+   You wanted text to use the normal colors.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+.main-entityHeader-metaData span,
+.main-entityHeader-metaData div,
+.main-trackList-trackListRow .main-trackList-rowTitle,
+.Root__right-sidebar span,
+.Root__right-sidebar p,
+.Root__right-sidebar h1,
+.Root__right-sidebar h2 {
+    color: var(--spice-text);
+    transition: color 250ms !important;
+}
+
+/* 
+   [CHANGE VERTICAL POSITION HERE]: Artist / Playlist Title Location
+   If the title text is sitting too high over the image, increase the 
+   margin-top below (e.g., to 20px or 40px) to push it down.
+*/
+.main-entityHeader-title {
+    margin-top: 40px !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Primary Play Button 
+   "Play button should always be dark"
+   We use the dark main color for the background circle, and the bright text color for the triangle icon.
+   Or reversed: Button background is ACCENT (button), Icon is DARK (main). 
+*/
+.main-playButton-PlayButton.main-playButton-primary {
+    background-color: var(--spice-button) !important;
+    /* Circle color */
+    color: var(--spice-main) !important;
+    /* Icon color (dark) */
+}
+
+.main-playButton-PlayButton.main-playButton-primary svg {
+    color: var(--spice-main) !important;
+    fill: var(--spice-main) !important;
+}
+
+/* ── Now Playing Bar (Right Side Elements) ───────────────────── */
+/* 
+   [CHANGE COLOR HERE]: About Artist, Credits, Queue background boxes
+   Currently a nice dark translucent black for contrast against the gradient.
+*/
+.main-nowPlayingView-aboutArtist,
+.main-nowPlayingView-aboutArtistV2,
+.main-nowPlayingView-credits,
+.main-nowPlayingView-queue,
+.main-nowPlayingView-section {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+
+/* ── 4. Track List & Library Hover/Active ─────────────────────── */
+
+/* 
+   [CHANGE COLOR HERE]: Hovered Track in Middle Panel AND Left Panel
+   Setting the background highlight color and the text color on hover.
+*/
+.main-trackList-trackListRow:hover,
+.main-yourLibraryX-rowContainer:hover {
+    background-color: rgba(var(--spice-rgb-selected-row), 0.3) !important;
+}
+
+.main-trackList-trackListRow:hover .main-trackList-rowTitle,
+.main-trackList-trackListRow:focus-within .main-trackList-rowTitle,
+.main-yourLibraryX-rowContainer:hover .main-yourLibraryX-listTitle,
+.main-yourLibraryX-rowContainer:hover span {
+    color: var(--spice-button) !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: Selected Track / Library Item (Clicked but not playing)
+*/
+.main-trackList-trackListRow.main-trackList-selected,
+.main-trackList-trackListRow.main-trackList-selected:hover,
+.main-yourLibraryX-rowContainer.main-yourLibraryX-listRow--active {
+    background-color: rgba(var(--spice-rgb-selected-row), 0.5) !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: ACTIVE (PLAYING) Track in Middle Panel AND Left Panel
+*/
+.main-trackList-trackListRow.main-trackList-active .main-trackList-rowTitle,
+.main-trackList-trackListRow.main-trackList-active .main-trackList-rowSectionVariable a,
+.main-trackList-trackListRow.main-trackList-active .main-trackList-rowSubTitle,
+.main-trackList-trackListRow.main-trackList-active .main-trackList-rowSubTitle a,
+.main-yourLibraryX-rowContainer.main-yourLibraryX-listRow--active .main-yourLibraryX-listTitle {
+    color: var(--spice-button) !important;
+}
+
+.main-trackList-trackListRow.main-trackList-active {
+    background: rgba(var(--spice-rgb-selected-row), 0.2) !important;
+}
+
+/* 
+   [CHANGE COLOR HERE]: The little EQ / Playing animation icon next to playing song 
+*/
+.main-trackList-playingIcon {
+    filter: sepia(100%) saturate(300%) hue-rotate(var(--spice-button));
+}
+
+
+/* ── 5. Progress Bar & Interactive ───────────────────────────── */
+/*
+   [CHANGE COLOR HERE]: Bottom Player Control Buttons (Next, Prev, Shuffle, etc)
+   These are dimmed by default and only light up into the accent color when active or hovered.
+*/
+.main-shuffleButton-button,
+.main-skipBackButton-button,
+.main-skipForwardButton-button,
+.main-repeatButton-button,
+.main-actionButtons button {
+    color: rgba(var(--spice-rgb-text), 1) !important;
+}
+
+.main-shuffleButton-button:hover,
+.main-skipBackButton-button:hover,
+.main-skipForwardButton-button:hover,
+.main-repeatButton-button:hover,
+.main-actionButtons button:hover {
+    color: var(--spice-text) !important;
+}
+
+.main-shuffleButton-button[aria-checked="true"],
+.main-repeatButton-button[aria-checked="true"],
+.main-repeatButton-button[aria-checked="mixed"] {
+    color: var(--spice-button) !important;
+}
+
+/*
+   [CHANGE COLOR HERE]: Timeline / Volume Progress Bars
+*/
+.playback-progressbar-isInteractive .x-progressBar-fillColor,
+.playback-bar .progress-bar__fg,
+.x-progressBar-fillColor {
+    background-color: var(--spice-button) !important;
+    transition: background-color 1s ease !important;
+}
+
+/* Slider handles */
+.x-progressBar-sliderArea [role="slider"]::before,
+.x-progressBar-sliderArea [role="slider"]::after {
+    background-color: var(--spice-button) !important;
+    transition: background-color 1s ease !important;
+}
+
+button {
+    transition: color 250ms ease, background 250ms ease, background-color 250ms ease !important;
+}
+
+/* General button highlight colors */
+.encore-bright-accent-set,
+.encore-inverted-light-set {
+    background-color: var(--spice-button) !important;
+}
+
+
+/* ── 6. Miscelaneous Fixes ───────────────────────────────────── */
+.playlist-playlist-playlistImageContainer img {
+    box-shadow: none !important;
+}
+
+.main-home-homeHeader {
+    display: none !important;
+}
+
+/* Hide Search category pseudo-elements */
+.search-searchCategory-contentArea::before,
+.search-searchCategory-contentArea::after {
+    display: none !important;
+    content: none !important;
+}
+
+.main-topBar-topbarContent>*,
+.main-topBar-topbarContentWrapper [class*="searchInput"] {
+    opacity: 1 !important;
+}
+
+.connect-device-list-container--is-visible {
+    z-index: 99999999;
+}
+
+
+/* ── 7. DOM Scrollbars ───────────────────────────────────────── */
+/* 
+   [CHANGE COLOR HERE]: Scrollbars!
+   The scrollbars are back across all views (Middle, Left, Right).
+   They are thinner, rounded, and use the Matugen accent color.
+*/
+
+/* Hide the native scrollbars, use thin custom ones everywhere */
+.os-scrollbar-vertical {
+    width: 6px !important;
+    padding-right: 2px !important;
+}
+
+/* The actual draggable bar */
+.os-scrollbar-handle {
+    border-radius: 4px !important;
+    background: var(--spice-button) !important;
+    /* Base color of scrollbar */
+    opacity: 0.5;
+    /* Default opacity when not hovered */
+    transition: opacity 250ms ease, background 250ms ease !important;
+}
+
+/* Hovering over the scroll bar */
+.os-scrollbar-handle:hover {
+    opacity: 1;
+    /* Fully visible on hover */
+    background: var(--spice-text) !important;
+    /* Brighter color on hover if you prefer */
+}
+
+/* Right sidebar (Now Playing view) scrollbar fix */
+.Root__right-sidebar .os-scrollbar-vertical {
+    width: 6px !important;
+    display: block !important;
+}
+
+.Root__main-view .os-scrollbar-vertical {
+    width: 6px !important;
+    display: block !important;
+}
+
+/* ── 8. Friends Activity Tab ─────────────────────────────────── */
+/* 
+   [CHANGE COLOR HERE]: Friend Activity / Buddy Feed Text
+   Forcing the text in the right-side Friends Activity panel to be fully white
+   so it's much easier to read against the gradient.
+*/
+.main-buddyFeed-content p,
+.main-buddyFeed-content span,
+.main-buddyFeed-content h1,
+.main-buddyFeed-content h2,
+.main-buddyFeed-content div:not([class*="avatar"]) {
+    color: #ffffff !important;
+}

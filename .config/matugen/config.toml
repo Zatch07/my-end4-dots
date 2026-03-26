@@ -63,3 +63,7 @@ output_path = '~/.antigravity/extensions/matugen-theme/themes/matugen-color-them
 [templates.vscode]
 input_path = '~/.config/matugen/templates/antigravity/dankshell.json'
 output_path = '~/.vscode/extensions/matugen-theme/themes/matugen-color-theme.json'
+
+[templates.nvim]
+input_path = '~/.config/matugen/templates/nvim-tokyonight.lua'
+output_path = '~/.config/nvim/lua/plugins/matugen.lua'

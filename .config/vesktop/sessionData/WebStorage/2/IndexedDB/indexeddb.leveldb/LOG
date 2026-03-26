@@ -1,0 +1,14 @@
+2026/03/26-02:01:37.121 81d Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/03/26-02:01:37.121 81d Recovering log #92
+2026/03/26-02:01:37.121 81d Reusing old log /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/000092.log 
+2026/03/26-02:01:37.121 81d Delete type=2 #90
+2026/03/26-02:01:37.127 875 Level-0 table #97: started
+2026/03/26-02:01:37.127 875 Level-0 table #97: 694 bytes OK
+2026/03/26-02:01:37.128 875 Delete type=0 #92
+2026/03/26-02:01:37.129 81d Manual compaction at level-0 from '\x00\x16\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x17\x00\x00\x00' @ 0 : 0; will stop at '\x00\x16\x00\x00\x05' @ 760 : 1
+2026/03/26-02:01:37.129 81d Compacting 1@0 + 1@1 files
+2026/03/26-02:01:37.129 81d Generated table #98@0: 7 keys, 701 bytes
+2026/03/26-02:01:37.129 81d Compacted 1@0 + 1@1 files => 701 bytes
+2026/03/26-02:01:37.130 81d compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/26-02:01:37.130 81d Delete type=2 #97
+2026/03/26-02:01:37.130 81d Manual compaction at level-0 from '\x00\x16\x00\x00\x05' @ 760 : 1 .. '\x00\x17\x00\x00\x00' @ 0 : 0; will stop at (end)
