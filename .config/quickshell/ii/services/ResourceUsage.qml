@@ -65,7 +65,7 @@ Singleton {
     }
 
 	Timer {
-		interval: 1
+		interval: 2000 // 2 seconds (was 1ms - fixed extreme CPU polling)
         running: true 
         repeat: true
 		onTriggered: {
@@ -75,10 +75,10 @@ Singleton {
 
             // Parse memory and swap usage
             const textMeminfo = fileMeminfo.text()
-            memoryTotal = Number(textMeminfo.match(/MemTotal: *(\d+)/)?.[1] ?? 1)
-            memoryFree = Number(textMeminfo.match(/MemAvailable: *(\d+)/)?.[1] ?? 0)
-            swapTotal = Number(textMeminfo.match(/SwapTotal: *(\d+)/)?.[1] ?? 1)
-            swapFree = Number(textMeminfo.match(/SwapFree: *(\d+)/)?.[1] ?? 0)
+            memoryTotal = Number(textMeminfo.match(/MemTotal:\s+(\d+)/)?.[1] ?? 1)
+            memoryFree = Number(textMeminfo.match(/MemAvailable:\s+(\d+)/)?.[1] ?? 0)
+            swapTotal = Number(textMeminfo.match(/SwapTotal:\s+(\d+)/)?.[1] ?? 0)
+            swapFree = Number(textMeminfo.match(/SwapFree:\s+(\d+)/)?.[1] ?? 0)
 
             // Parse CPU usage
             const textStat = fileStat.text()
