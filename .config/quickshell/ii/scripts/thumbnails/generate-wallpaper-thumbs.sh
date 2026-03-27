@@ -33,15 +33,13 @@ process_image() {
     name="$(basename "$src")"
     local thumb="${THUMB_DIR}/${name}.jpg"
 
-    # Skip if already generated
     if [ -f "$thumb" ]; then
         return 0
     fi
 
     echo "Thumbing: $name"
-    # -resize fits within 1280x720 preserving aspect ratio
-    # -background black -gravity center -extent pads to exact 1280x720
-    magick "$src" \
+    # Added 'nice -n 10' right before 'magick'
+    nice -n 10 magick "$src" \
         -resize "${THUMB_W}x${THUMB_H}" \
         -background black \
         -gravity center \
@@ -55,7 +53,6 @@ process_video() {
     local src="$1"
     local name
     name="$(basename "$src")"
-    # Prefix video thumbs with 000_ so QML detects them as videos
     local thumb="${THUMB_DIR}/000_${name}.jpg"
 
     if [ -f "$thumb" ]; then
@@ -63,8 +60,8 @@ process_video() {
     fi
 
     echo "Thumbing video: $name"
-    # Extract frame at 1 second, scale to 720p
-    ffmpeg -y -ss 00:00:01 -i "$src" \
+    # Added 'nice -n 10' right before 'ffmpeg'
+    nice -n 10 ffmpeg -y -ss 00:00:01 -i "$src" \
         -vframes 1 \
         -vf "scale=${THUMB_W}:${THUMB_H}:force_original_aspect_ratio=decrease,pad=${THUMB_W}:${THUMB_H}:(ow-iw)/2:(oh-ih)/2:black" \
         -q:v 3 \
@@ -87,7 +84,8 @@ job_count=0
 for ext in "${IMAGE_EXTS[@]}"; do
     for f in "${WALL_DIR}"/*.${ext}; do
         [ -f "$f" ] || continue
-        nice -n 10 process_image "$f" &
+        # Call the function directly in the background
+        process_image "$f" &
         ((job_count++))
         if (( job_count >= MAX_JOBS )); then
             wait -n
@@ -99,7 +97,8 @@ done
 for ext in "${VIDEO_EXTS[@]}"; do
     for f in "${WALL_DIR}"/*.${ext}; do
         [ -f "$f" ] || continue
-        nice -n 10 process_video "$f" &
+        # Call the function directly in the background
+        process_video "$f" &
         ((job_count++))
         if (( job_count >= MAX_JOBS )); then
             wait -n
