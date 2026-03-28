@@ -33,8 +33,15 @@ FOLDERS=(
     "swww"
     "vesktop"
     "wal"
+    "vivaldi"
     "waybar"
     "wlogout"
+)
+
+# Folders that need special filtering (e.g. skip cache dirs)
+# Format: "folder:exclude1:exclude2"
+FILTERED_FOLDERS=(
+    "vivaldi:Cache:Code Cache:GPUCache:GrShaderCache:ShaderCache"
 )
 
 # Create config directory structure in the backup repo
@@ -43,8 +50,22 @@ mkdir -p .config
 for folder in "${FOLDERS[@]}"; do
     if [ -d "${CONFIG_DIR}/${folder}" ]; then
         echo "Backing up .config/${folder}..."
-        # Sync identically, deleting old files that were removed in your actual setup
         rsync -aP --delete "${CONFIG_DIR}/${folder}/" ".config/${folder}/"
+    fi
+done
+
+# Backup filtered folders (skip cache/GPU junk to keep repo small)
+for entry in "${FILTERED_FOLDERS[@]}"; do
+    IFS=':' read -ra parts <<< "$entry"
+    folder="${parts[0]}"
+    if [ -d "${CONFIG_DIR}/${folder}" ]; then
+        echo "Backing up .config/${folder} (filtered)..."
+        exclude_args=()
+        for (( i=1; i<${#parts[@]}; i++ )); do
+            exclude_args+=(--exclude="${parts[$i]}/")
+        done
+        mkdir -p ".config/${folder}"
+        rsync -aP --delete "${exclude_args[@]}" "${CONFIG_DIR}/${folder}/" ".config/${folder}/"
     fi
 done
 
