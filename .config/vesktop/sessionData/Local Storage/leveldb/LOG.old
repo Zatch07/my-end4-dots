@@ -1,23 +1,18 @@
-2026/03/26-10:43:36.670 856 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
-2026/03/26-10:43:36.673 856 Recovering log #3174
-2026/03/26-10:43:36.673 856 Level-0 table #3177: started
-2026/03/26-10:43:36.674 856 Level-0 table #3177: 33542 bytes OK
-2026/03/26-10:43:36.676 856 Delete type=0 #3174
-2026/03/26-10:43:36.676 82d Compacting 4@0 + 1@1 files
-2026/03/26-10:43:36.678 82d Generated table #3179@0: 85 keys, 78738 bytes
-2026/03/26-10:43:36.679 82d Compacted 4@0 + 1@1 files => 78738 bytes
-2026/03/26-10:43:36.680 82d compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/03/26-10:43:36.680 82d Delete type=2 #3167
-2026/03/26-10:43:36.680 82d Delete type=2 #3170
-2026/03/26-10:43:36.680 82d Delete type=2 #3172
-2026/03/26-10:43:36.680 82d Delete type=2 #3175
-2026/03/26-10:43:36.680 82d Delete type=2 #3177
-2026/03/26-15:53:58.257 855 Level-0 table #3181: started
-2026/03/26-15:53:58.258 855 Level-0 table #3181: 34165 bytes OK
-2026/03/26-15:53:58.259 855 Delete type=0 #3178
-2026/03/26-18:59:19.965 855 Level-0 table #3183: started
-2026/03/26-18:59:19.966 855 Level-0 table #3183: 52196 bytes OK
-2026/03/26-18:59:19.967 855 Delete type=0 #3180
-2026/03/26-21:28:57.548 855 Level-0 table #3185: started
-2026/03/26-21:28:57.549 855 Level-0 table #3185: 48979 bytes OK
-2026/03/26-21:28:57.550 855 Delete type=0 #3182
+2026/03/27-13:51:07.841 8d2 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2026/03/27-13:51:07.844 8d2 Recovering log #3184
+2026/03/27-13:51:07.844 8d2 Reusing old log /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/003184.log 
+2026/03/27-15:13:03.967 8cf Level-0 table #3188: started
+2026/03/27-15:13:03.968 8cf Level-0 table #3188: 56839 bytes OK
+2026/03/27-15:13:03.969 8cf Delete type=0 #3184
+2026/03/27-15:13:03.969 8cf Compacting 4@0 + 1@1 files
+2026/03/27-15:13:03.971 8cf Generated table #3189@0: 85 keys, 77472 bytes
+2026/03/27-15:13:03.971 8cf Compacted 4@0 + 1@1 files => 77472 bytes
+2026/03/27-15:13:03.972 8cf compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/27-15:13:03.972 8cf Delete type=2 #3179
+2026/03/27-15:13:03.972 8cf Delete type=2 #3181
+2026/03/27-15:13:03.972 8cf Delete type=2 #3183
+2026/03/27-15:13:03.972 8cf Delete type=2 #3185
+2026/03/27-15:13:03.972 8cf Delete type=2 #3188
+2026/03/27-17:48:22.495 8cf Level-0 table #3191: started
+2026/03/27-17:48:22.496 8cf Level-0 table #3191: 51542 bytes OK
+2026/03/27-17:48:22.497 8cf Delete type=0 #3187
