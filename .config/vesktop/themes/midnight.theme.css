@@ -46,7 +46,7 @@
 	--text-5: #919191;               /* muted channels/chats and timestamps */
 
 	/* background and dark colors */
-    --bg-1: #bbd063;                             /* dark buttons when clicked */
+    --bg-1: #474747;                     /* dark buttons when clicked */
 	--bg-2: #2a2a2a;              /* dark buttons */
 	--bg-3: #1b1b1b;               /* spacing, secondary elements */
 	--bg-4: #131313;                             /* main background color */
@@ -55,7 +55,7 @@
 	--message-hover: #393939;             /* messages when hovered */
 
 	/* amount of spacing and padding */
-	--spacing: 8px;
+	--spacing: 12px;
 
 	/* animations */
 	/* ALL ANIMATIONS CAN BE DISABLED WITH REDUCED MOTION IN DISCORD SETTINGS */

@@ -1,18 +1,23 @@
-2026/03/27-13:51:07.841 8d2 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
-2026/03/27-13:51:07.844 8d2 Recovering log #3184
-2026/03/27-13:51:07.844 8d2 Reusing old log /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/003184.log 
-2026/03/27-15:13:03.967 8cf Level-0 table #3188: started
-2026/03/27-15:13:03.968 8cf Level-0 table #3188: 56839 bytes OK
-2026/03/27-15:13:03.969 8cf Delete type=0 #3184
-2026/03/27-15:13:03.969 8cf Compacting 4@0 + 1@1 files
-2026/03/27-15:13:03.971 8cf Generated table #3189@0: 85 keys, 77472 bytes
-2026/03/27-15:13:03.971 8cf Compacted 4@0 + 1@1 files => 77472 bytes
-2026/03/27-15:13:03.972 8cf compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/03/27-15:13:03.972 8cf Delete type=2 #3179
-2026/03/27-15:13:03.972 8cf Delete type=2 #3181
-2026/03/27-15:13:03.972 8cf Delete type=2 #3183
-2026/03/27-15:13:03.972 8cf Delete type=2 #3185
-2026/03/27-15:13:03.972 8cf Delete type=2 #3188
-2026/03/27-17:48:22.495 8cf Level-0 table #3191: started
-2026/03/27-17:48:22.496 8cf Level-0 table #3191: 51542 bytes OK
-2026/03/27-17:48:22.497 8cf Delete type=0 #3187
+2026/03/29-11:45:08.493 8d3 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2026/03/29-11:45:08.496 8d3 Recovering log #3204
+2026/03/29-11:45:08.496 8d3 Level-0 table #3207: started
+2026/03/29-11:45:08.497 8d3 Level-0 table #3207: 58525 bytes OK
+2026/03/29-11:45:08.498 8d3 Delete type=0 #3204
+2026/03/29-14:03:19.934 8d1 Level-0 table #3210: started
+2026/03/29-14:03:19.935 8d1 Level-0 table #3210: 74851 bytes OK
+2026/03/29-14:03:19.936 8d1 Delete type=0 #3208
+2026/03/29-14:03:19.937 8d1 Compacting 4@0 + 1@1 files
+2026/03/29-14:03:19.938 8d1 Generated table #3211@0: 88 keys, 80179 bytes
+2026/03/29-14:03:19.938 8d1 Compacted 4@0 + 1@1 files => 80179 bytes
+2026/03/29-14:03:19.939 8d1 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/29-14:03:19.940 8d1 Delete type=2 #3199
+2026/03/29-14:03:19.940 8d1 Delete type=2 #3202
+2026/03/29-14:03:19.940 8d1 Delete type=2 #3205
+2026/03/29-14:03:19.940 8d1 Delete type=2 #3207
+2026/03/29-14:03:19.940 8d1 Delete type=2 #3210
+2026/03/29-17:55:12.544 8d1 Level-0 table #3213: started
+2026/03/29-17:55:12.545 8d1 Level-0 table #3213: 42645 bytes OK
+2026/03/29-17:55:12.546 8d1 Delete type=0 #3209
+2026/03/29-18:00:00.075 8d1 Level-0 table #3215: started
+2026/03/29-18:00:00.076 8d1 Level-0 table #3215: 15556 bytes OK
+2026/03/29-18:00:00.077 8d1 Delete type=0 #3212
