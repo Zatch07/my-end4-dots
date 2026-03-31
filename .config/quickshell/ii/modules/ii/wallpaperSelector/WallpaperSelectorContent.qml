@@ -94,8 +94,8 @@ Item {
         focus: true
 
         highlightRangeMode: ListView.StrictlyEnforceRange
-        preferredHighlightBegin: (width / 2) - (root.itemWidth / 2)
-        preferredHighlightEnd:   (width / 2) + (root.itemWidth / 2)
+        preferredHighlightBegin: (width / 2) - (root.itemWidth / 2) + 60
+        preferredHighlightEnd:   (width / 2) + (root.itemWidth / 2) + 60
         highlightMoveDuration: 300
 
         model: thumbModel

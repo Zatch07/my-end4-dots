@@ -1,9 +1,0 @@
-2026/03/30-13:17:38.906 8dc Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
-2026/03/30-13:17:38.908 8dc Recovering log #3219
-2026/03/30-13:17:38.909 8dc Reusing old log /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/003219.log 
-2026/03/30-13:18:39.970 8db Level-0 table #3224: started
-2026/03/30-13:18:39.971 8db Level-0 table #3224: 41186 bytes OK
-2026/03/30-13:18:39.972 8db Delete type=0 #3219
-2026/03/30-13:22:44.511 8db Level-0 table #3226: started
-2026/03/30-13:22:44.512 8db Level-0 table #3226: 42665 bytes OK
-2026/03/30-13:22:44.513 8db Delete type=0 #3223

@@ -39,3 +39,4 @@ end
 function code
     command code -r --quiet $argv 2>/dev/null
 end
+

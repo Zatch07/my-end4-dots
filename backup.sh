@@ -29,6 +29,7 @@ FOLDERS=(
     "qt6ct"
     "quickshell"
     "rofi"
+    "skwd"
     "spicetify"
     "swww"
     "vesktop"
@@ -66,6 +67,18 @@ for entry in "${FILTERED_FOLDERS[@]}"; do
         done
         mkdir -p ".config/${folder}"
         rsync -aP --delete "${exclude_args[@]}" "${CONFIG_DIR}/${folder}/" ".config/${folder}/"
+    fi
+done
+
+# Backup standalone files from home directory
+STANDALONE_FILES=(
+    "END4_CHANGELOG.md"
+)
+
+for file in "${STANDALONE_FILES[@]}"; do
+    if [ -f "${HOME}/${file}" ]; then
+        echo "Backing up ${file}..."
+        cp "${HOME}/${file}" "${BACKUP_DIR}/${file}"
     fi
 done
 

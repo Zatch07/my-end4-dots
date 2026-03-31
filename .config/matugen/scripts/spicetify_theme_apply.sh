@@ -14,10 +14,10 @@ if [[ "$extensions" == *"Vibrant.min.js"* ]] || [[ "$extensions" == *"deluxified
   modified_extensions=1
 fi
 
-# Check if the theme is already set to caelestia
-if [[ "$theme" != "caelestia" ]] || [[ "$modified_extensions" == "1" ]]; then
+# Check if the theme is already set to skwd
+if [[ "$theme" != "skwd" ]] || [[ "$modified_extensions" == "1" ]]; then
   # First time setup or extension change: full apply required
-  spicetify config current_theme caelestia
+  spicetify config current_theme skwd
   spicetify apply
 else
   # Use 'refresh -s' to update styles/colors without restarting the app instantly
