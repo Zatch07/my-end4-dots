@@ -1,0 +1,26 @@
+[opener]
+# Lane 1: The "Editor" (VS Code)
+edit = [
+    { run = 'code --wait "$@"', block = true }
+]
+# Lane 2: The "Viewer" (System Default)
+view = [
+    { run = 'xdg-open "$@"', desc = "Open" }
+]
+
+[open]
+rules = [
+    # --- TECH FILES (VS Code) ---
+    { name = "Dockerfile", use = "edit" },
+    { name = "docker-compose.yml", use = "edit" },
+    { name = "*.{sh,py,js,json,yaml,toml,conf,txt,md}", use = "edit" },
+    { mime = "text/*", use = "edit" },
+
+    # --- IMAGE FILES (System Viewer) ---
+    # This catches .png, .jpg, .webp, etc.
+    { mime = "image/*", use = "view" },
+
+    # --- FALLBACK ---
+    # If it's not text or an image, try to "view" it (default behavior)
+    { name = "*", use = "view" }
+]

@@ -1,0 +1,29 @@
+[opener]
+vscode = [
+    { run = 'code --wait "$@"', block = true, for = "unix" }
+]
+system_viewer = [
+    { run = 'xdg-open "$@"', desc = "Open" }
+]
+
+[open]
+rules = [
+    # 1. Tech Files -> VS Code
+    { name = "Dockerfile", use = "vscode" },
+    { name = "docker-compose.yml", use = "vscode" },
+    { name = "*.sh", use = "vscode" },
+    { name = "*.py", use = "vscode" },
+    { name = "*.json", use = "vscode" },
+    { name = "*.toml", use = "vscode" },
+    { name = "*.md", use = "vscode" },
+    { name = "*.txt", use = "vscode" },
+    
+    # 2. Catch any text-based files
+    { mime = "text/*", use = "vscode" },
+
+    # 3. Image Files -> System Viewer (Loupe/imv)
+    { mime = "image/*", use = "system_viewer" },
+
+    # 4. Fallback: If it's not an image, try opening in VS Code
+    { name = "*", use = "vscode" }
+]

@@ -1,0 +1,52 @@
+{
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "editor.fontWeight": "normal",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "afterDelay",
+    "workbench.startupEditor": "none",
+    "editor.inlineSuggest.enabled": true,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "remote.SSH.remotePlatform": {
+        "ec2-13-215-176-219.ap-southeast-1.compute.amazonaws.com": "linux",
+        "ec2-3-0-94-64.ap-southeast-1.compute.amazonaws.com": "linux"
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "editor.fontFamily": "Cartograph CF",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "redhat.telemetry.enabled": true,
+    "workbench.colorTheme": "Matugen Dynamic Theme",
+    "explorer.confirmDelete": false,
+    "workbench.editor.empty.hint": "hidden",
+    "vscode-ollama.baseUrl": "http://127.0.0.1:11434",
+    "vscode-ollama.model": "deepseek-coder-v2:16b",
+    "vscode-ollama.maxTokens": 4096,
+    "vscode-ollama.keepAlive": "30 minutes",
+    "vscode-ollama.performanceMode": "Base (Default)",
+    "vscode-ollama.systemPrompt": "Given the following conversation, relevant context, and a follow up question, reply with an answer to the current question the user is asking. Return only your response to the question given the above information following the users instructions as needed.",
+    "editor.cursorBlinking": "expand",
+    "terminal.integrated.cursorBlinking": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.wordWrap": "on",
+    "codium.codeCompletion.enable": false,
+    "codium.customInstructions.allMessages": "",
+    "codium.customInstructions.specificCommands": {},
+    "codium.editorButton": true,
+    "codium.codeCompletion.userInstructions": "",
+    "codium.rag.maxLocalSnippets": 5,
+    "codium.rag.maxRemoteSnippets": 5,
+    "http.systemCertificatesNode": true,
+    "geminicodeassist.project": "voltaic-slice-2z5z1"
+,
+  "material-code.primaryColor": "#01111C"
+}

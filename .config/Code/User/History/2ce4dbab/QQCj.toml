@@ -1,0 +1,18 @@
+[opener]
+edit = [
+    { run = 'code --wait "$@"', block = true, for = "unix" }
+]
+
+[open]
+rules = [
+    # Use 'url' instead of 'name' for the latest Yazi version
+    { url = "Dockerfile", use = "edit" },
+    { url = "docker-compose.yml", use = "edit" },
+    { url = "*.{sh,py,js,json,yaml,toml,conf,txt,md}", use = "edit" },
+
+    # Fallback for any text-like file
+    { mime = "text/*", use = "edit" },
+    
+    # Ultimate fallback: if nothing else matches, try to open it
+    { url = "*", use = "edit" }
+]

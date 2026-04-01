@@ -1,0 +1,138 @@
+{
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "editor.fontWeight": "normal",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "afterDelay",
+    "workbench.startupEditor": "none",
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontFamily": "Cartograph CF",
+    "workbench.colorTheme": "Matugen Dynamic Theme",
+    
+    "workbench.colorCustomizations": {
+        // --- BASE & WINDOW ---
+        "focusBorder":                            "#ffafd555",
+        "foreground":                             "#e2e2e2",
+        "widget.shadow":                          "#000000AA",
+        "selection.background":                   "#ffafd533",
+        "descriptionForeground":                  "#c6c6c6AA",
+        "errorForeground":                        "#ffb4ab",
+        
+        "window.activeBorder":                    "#ffafd533",
+        "window.inactiveBorder":                  "#00000000",
+        
+        // --- TEXT ---
+        "textLink.foreground":                    "#ffafd5",
+        "textLink.activeForeground":              "#ffd8e8",
+        "textCodeBlock.background":               "#1b1b1b",
+
+        // --- BUTTONS & INPUT ---
+        "button.background":                      "#ffafd5",
+        "button.foreground":                      "#5b113f",
+        "button.hoverBackground":                 "#772957",
+
+        "input.background":                       "#2a2a2a55",
+        "input.foreground":                       "#e2e2e2",
+        "input.border":                           "#47474733",
+
+        // --- SCROLLBAR ---
+        "scrollbarSlider.background":             "#ffafd511",
+        "scrollbarSlider.hoverBackground":        "#ffafd522",
+        "scrollbarSlider.activeBackground":       "#ffafd544",
+
+        // --- ACTIVITY BAR (The Tinted Sidebar) ---
+        "activityBar.background":                 "#0a0a0a",
+        "activityBar.foreground":                 "#ffafd5",
+        "activityBar.inactiveForeground":         "#c6c6c666",
+        "activityBar.border":                     "#00000000",
+        "activityBar.activeBorder":               "#ffafd5",
+        "activityBarBadge.background":            "#ffafd5",
+        "activityBarBadge.foreground":            "#5b113f",
+
+        // --- SIDE BAR ---
+        "sideBar.background":                     "#1b1b1b",
+        "sideBar.foreground":                     "#e2e2e2CC",
+        "sideBar.border":                         "#00000000",
+        "sideBarTitle.foreground":                "#ffafd5BB",
+        "sideBarSectionHeader.background":        "#00000000",
+        "sideBarSectionHeader.foreground":        "#e2e2e2",
+        "sideBarSectionHeader.border":            "#47474711",
+
+        // --- EDITOR & TABS ---
+        "editorGroup.border":                     "#47474711",
+        "editorGroupHeader.tabsBackground":       "#0a0a0a",
+        "editorGroupHeader.tabsBorder":           "#00000000",
+        
+        "tab.activeBackground":                   "#121212",
+        "tab.activeForeground":                   "#ffafd5",
+        "tab.activeBorderTop":                    "#ffafd5",
+        "tab.inactiveBackground":                 "#0a0a0a",
+        "tab.inactiveForeground":                 "#c6c6c688",
+        "tab.border":                             "#00000000",
+
+        "editor.background":                      "#1f1f1f",
+        "editor.foreground":                      "#e2e2e2",
+        "editorLineNumber.foreground":            "#c6c6c633",
+        "editorLineNumber.activeForeground":      "#ffafd5BB",
+        "editorCursor.foreground":                "#ffafd5",
+        "editor.selectionBackground":             "#ffafd522",
+        "editor.lineHighlightBackground":         "#e2e2e212",
+        "editor.lineHighlightBorder":             "#00000000",
+
+        "editorGutter.background":                "#0f0f0f",
+        "editorBracketHighlight.foreground1":     "#ffafd5",
+        "editorBracketHighlight.foreground2":     "#e0bdcb",
+        "editorBracketHighlight.foreground3":     "#f2bb9a",
+
+        // --- PANEL & STATUS BAR ---
+        "panel.background":                       "#0a0a0a",
+        "panel.border":                           "#47474722",
+        "panelTitle.activeForeground":            "#ffafd5",
+        "panelTitle.activeBorder":                "#ffafd5",
+
+        "statusBar.background":                   "#050505",
+        "statusBar.foreground":                   "#c6c6c6BB",
+        "statusBar.border":                       "#00000000",
+        "statusBar.noFolderBackground":           "#050505",
+
+        "titleBar.activeBackground":              "#050505",
+        "titleBar.activeForeground":              "#e2e2e2",
+        "titleBar.border":                        "#00000000"
+    },
+
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": ["comment", "punctuation.definition.comment"],
+                "settings": { "foreground": "#c6c6c677", "fontStyle": "italic" }
+            },
+            {
+                "scope": ["keyword", "storage.type", "storage.modifier"],
+                "settings": { "foreground": "#ffafd5", "fontStyle": "italic" }
+            },
+            {
+                "scope": ["string", "constant.other.symbol", "punctuation.definition.string"],
+                "settings": { "foreground": "#f2bb9a" }
+            },
+            {
+                "scope": ["entity.name.function", "support.function"],
+                "settings": { "foreground": "#ffd8e8" }
+            },
+            {
+                "scope": ["variable", "support.variable"],
+                "settings": { "foreground": "#e2e2e2" }
+            },
+            {
+                "scope": ["entity.name.type", "entity.name.class", "support.type", "support.class"],
+                "settings": { "foreground": "#e0bdcb" }
+            },
+            {
+                "scope": ["constant.numeric", "constant.language"],
+                "settings": { "foreground": "#e0bdcb" }
+            }
+        ]
+    }
+,
+"material-code.primaryColor": "#56143B"
+}

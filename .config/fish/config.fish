@@ -3,6 +3,8 @@ function fish_prompt -d "Write out the prompt"
         (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end
 
+fish_add_path ~/.local/bin
+
 if status is-interactive
     # No greeting
     set fish_greeting
@@ -22,6 +24,9 @@ if status is-interactive
     alias ls 'eza --icons'
     alias pamcan pacman
     alias q 'qs -c ii'
+    alias tui-apps 'tui-apps'
+    alias quick-links 'quick-links'
+    alias finder 'finder'
 
 end
 

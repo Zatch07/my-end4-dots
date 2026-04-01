@@ -1,0 +1,12 @@
+[open]
+rules = [
+    { url = "Dockerfile", use = "vscode" },
+    { url = "docker-compose.yml", use = "vscode" },
+    { url = "*.{sh,py,js,json,yaml,toml,conf,txt,md}", use = "vscode" },
+    { mime = "text/*", use = "vscode" }
+]
+
+[opener]
+vscode = [
+    { run = 'code --wait "$@"', block = true, for = "unix" }
+]

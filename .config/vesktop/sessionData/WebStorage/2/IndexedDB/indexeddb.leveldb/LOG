@@ -1,14 +1,14 @@
-2026/03/30-13:22:40.748 8ad Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/MANIFEST-000001
-2026/03/30-13:22:40.748 8ad Recovering log #100
-2026/03/30-13:22:40.748 8ad Reusing old log /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/000100.log 
-2026/03/30-13:22:40.748 8ad Delete type=2 #98
-2026/03/30-13:22:40.752 8dc Level-0 table #105: started
-2026/03/30-13:22:40.753 8dc Level-0 table #105: 1452 bytes OK
-2026/03/30-13:22:40.754 8dc Delete type=0 #100
-2026/03/30-13:22:40.754 8ad Manual compaction at level-0 from '\x00\x18\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x19\x00\x00\x00' @ 0 : 0; will stop at '\x00\x18\x00\x00\x05' @ 822 : 1
-2026/03/30-13:22:40.754 8ad Compacting 1@0 + 1@1 files
-2026/03/30-13:22:40.755 8ad Generated table #106@0: 18 keys, 850 bytes
-2026/03/30-13:22:40.755 8ad Compacted 1@0 + 1@1 files => 850 bytes
-2026/03/30-13:22:40.756 8ad compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/03/30-13:22:40.756 8ad Delete type=2 #105
-2026/03/30-13:22:40.756 8ad Manual compaction at level-0 from '\x00\x18\x00\x00\x05' @ 822 : 1 .. '\x00\x19\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/04/01-01:05:07.321 859 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/04/01-01:05:07.321 859 Recovering log #104
+2026/04/01-01:05:07.321 859 Reusing old log /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/000104.log 
+2026/04/01-01:05:07.321 859 Delete type=2 #102
+2026/04/01-01:05:07.325 8e5 Level-0 table #109: started
+2026/04/01-01:05:07.325 8e5 Level-0 table #109: 1401 bytes OK
+2026/04/01-01:05:07.326 8e5 Delete type=0 #104
+2026/04/01-01:05:07.326 859 Manual compaction at level-0 from '\x00\x19\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x19\x00\x00\x05' @ 865 : 1
+2026/04/01-01:05:07.326 859 Compacting 1@0 + 1@1 files
+2026/04/01-01:05:07.327 859 Generated table #110@0: 18 keys, 850 bytes
+2026/04/01-01:05:07.327 859 Compacted 1@0 + 1@1 files => 850 bytes
+2026/04/01-01:05:07.328 859 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/04/01-01:05:07.328 859 Delete type=2 #109
+2026/04/01-01:05:07.328 859 Manual compaction at level-0 from '\x00\x19\x00\x00\x05' @ 865 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at (end)

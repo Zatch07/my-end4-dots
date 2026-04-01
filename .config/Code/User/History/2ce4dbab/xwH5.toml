@@ -1,0 +1,33 @@
+[opener]
+# 1. The Editor
+vscode = [
+    # The '2>/dev/null' at the end kills the Wayland/Electron warnings
+    { run = 'code --wait --quiet "$@" 2>/dev/null', block = true }
+]
+# 2. The Image Viewer
+system_viewer = [
+    { run = 'xdg-open "$@"', desc = "Open Image" }
+]
+# 3. The Video Player
+video_player = [
+    { run = 'vlc "$@"', detach = true, desc = "Open Video" }
+]
+
+[open]
+rules = [
+    # --- IMAGES ---
+    { mime = "image/*", use = "system_viewer" },
+
+    # --- VIDEOS ---
+    { mime = "video/*", use = "video_player" },
+
+    # --- TECH FILES (VS Code) ---
+    { name = "Dockerfile", use = "vscode" },
+    { name = "docker-compose.yml", use = "vscode" },
+    { mime = "application/octet-stream", use = "vscode" }, # Fixes the Dockerfile detection
+    { name = "*.{sh,py,js,json,yaml,toml,conf,txt,md}", use = "vscode" },
+
+    # --- FALLBACKS ---
+    { mime = "text/*", use = "vscode" },
+    { name = "*", use = "vscode" }
+]

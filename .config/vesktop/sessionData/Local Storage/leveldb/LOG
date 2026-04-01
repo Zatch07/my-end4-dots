@@ -1,0 +1,18 @@
+2026/04/01-12:04:33.679 8d5 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2026/04/01-12:04:33.684 8d5 Recovering log #3490
+2026/04/01-12:04:33.684 8d5 Reusing old log /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/003490.log 
+2026/04/01-19:02:29.533 8d4 Level-0 table #3494: started
+2026/04/01-19:02:29.534 8d4 Level-0 table #3494: 21061 bytes OK
+2026/04/01-19:02:29.535 8d4 Delete type=0 #3490
+2026/04/01-19:07:30.388 8d4 Level-0 table #3496: started
+2026/04/01-19:07:30.389 8d4 Level-0 table #3496: 38327 bytes OK
+2026/04/01-19:07:30.390 8d4 Delete type=0 #3493
+2026/04/01-19:07:30.390 8d4 Compacting 4@0 + 1@1 files
+2026/04/01-19:07:30.392 8d4 Generated table #3497@0: 89 keys, 79560 bytes
+2026/04/01-19:07:30.392 8d4 Compacted 4@0 + 1@1 files => 79560 bytes
+2026/04/01-19:07:30.393 8d4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/04/01-19:07:30.393 8d4 Delete type=2 #3487
+2026/04/01-19:07:30.393 8d4 Delete type=2 #3489
+2026/04/01-19:07:30.393 8d4 Delete type=2 #3491
+2026/04/01-19:07:30.393 8d4 Delete type=2 #3494
+2026/04/01-19:07:30.394 8d4 Delete type=2 #3496

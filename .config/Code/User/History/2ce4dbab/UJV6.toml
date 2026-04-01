@@ -1,0 +1,27 @@
+[opener]
+vscode = [
+    { run = 'code --wait "$@"', block = true }
+]
+system_viewer = [
+    { run = 'xdg-open "$@"', desc = "Open" }
+]
+
+[open]
+rules = [
+    # 1. PRIORITY: Images go to the viewer
+    { mime = "image/*", use = "system_viewer" },
+
+    # 2. TECHNOLOGY: Match Dockerfile by name (Highest Priority)
+    { name = "Dockerfile", use = "vscode" },
+    { name = "docker-compose.yml", use = "vscode" },
+
+    # 3. MIME FIX: Treat "octet-stream" (the Dockerfile) as code
+    { mime = "application/octet-stream", use = "vscode" },
+
+    # 4. EXTENSIONS: Match common tech files
+    { name = "*.{sh,py,js,json,yaml,toml,conf,txt,md}", use = "vscode" },
+
+    # 5. FALLBACK: Anything else that isn't an image -> VS Code
+    { mime = "text/*", use = "vscode" },
+    { name = "*", use = "vscode" }
+]

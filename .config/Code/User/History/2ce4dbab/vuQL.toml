@@ -1,0 +1,14 @@
+[opener]
+edit = [
+    { run = 'code --wait "$@"', block = true, for = "unix" }
+]
+
+[open]
+rules = [
+    # Tell Yazi: If the file is named Dockerfile, use VS Code
+    { name = "Dockerfile", use = "edit" },
+    # Tell Yazi: If it's a common tech file, use VS Code
+    { name = "*.{sh,py,js,json,yaml,toml,conf,txt}", use = "edit" },
+    # Fallback: If nothing else matches, try the editor
+    { mime = "text/*", use = "edit" }
+]

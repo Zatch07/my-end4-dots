@@ -1,0 +1,12 @@
+services:
+  tct-bot:
+    build: .
+    container_name: tct_bot
+    restart: always
+    # This section fixes the "server misbehaving" boot error
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      - ./config.env:/app/.env
+    tty: true

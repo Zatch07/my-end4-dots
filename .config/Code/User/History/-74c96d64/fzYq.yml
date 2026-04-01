@@ -1,0 +1,8 @@
+services:
+  tct-bot:
+    build: .
+    container_name: tct_bot
+    restart: always  # Replaces Systemd auto-restart
+    volumes:
+      - ./config.env:/app/.env  # Mount your local config file into the container
+    tty: true # Keeps the terminal interactive if needed for logs
