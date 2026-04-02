@@ -184,12 +184,12 @@ html, body {
 }
 
 .main-trackList-trackListRow.main-trackList-selected {
-  background: rgba(87, 214, 246, 0.85) !important;
+  background: rgba(255, 181, 152, 0.85) !important;
 }
 
 .main-trackList-trackListRow.main-trackList-selected span,
 .main-trackList-trackListRow.main-trackList-selected a {
-  color: #b0ecff !important;
+  color: #ffdbce !important;
 }
 
 

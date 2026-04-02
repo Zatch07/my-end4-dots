@@ -76,3 +76,7 @@ output_path = '~/.config/Code/User/settings.json'
 [templates.nvim]
 input_path = '~/.config/matugen/templates/nvim-tokyonight.lua'
 output_path = '~/.config/nvim/lua/plugins/matugen.lua'
+
+[templates.nighttab]
+input_path = '~/.config/matugen/templates/nighttab.css.tpl'
+output_path = '~/.config/matugen/templates/Night-tab/matugen.css'

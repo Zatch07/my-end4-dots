@@ -1,23 +1,12 @@
-2026/04/01-01:02:29.569 8e5 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
-2026/04/01-01:02:29.573 8e5 Recovering log #3480
-2026/04/01-01:02:29.573 8e5 Level-0 table #3483: started
-2026/04/01-01:02:29.575 8e5 Level-0 table #3483: 37566 bytes OK
-2026/04/01-01:02:29.576 8e5 Delete type=0 #3480
-2026/04/01-01:03:29.045 8e4 Level-0 table #3486: started
-2026/04/01-01:03:29.046 8e4 Level-0 table #3486: 31573 bytes OK
-2026/04/01-01:03:29.047 8e4 Delete type=0 #3484
-2026/04/01-01:03:29.047 8e4 Compacting 4@0 + 1@1 files
-2026/04/01-01:03:29.048 8e4 Generated table #3487@0: 89 keys, 78975 bytes
-2026/04/01-01:03:29.049 8e4 Compacted 4@0 + 1@1 files => 78975 bytes
-2026/04/01-01:03:29.049 8e4 compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/04/01-01:03:29.050 8e4 Delete type=2 #3476
-2026/04/01-01:03:29.050 8e4 Delete type=2 #3479
-2026/04/01-01:03:29.050 8e4 Delete type=2 #3481
-2026/04/01-01:03:29.050 8e4 Delete type=2 #3483
-2026/04/01-01:03:29.050 8e4 Delete type=2 #3486
-2026/04/01-01:05:12.256 8e4 Level-0 table #3489: started
-2026/04/01-01:05:12.257 8e4 Level-0 table #3489: 20736 bytes OK
-2026/04/01-01:05:12.259 8e4 Delete type=0 #3485
-2026/04/01-03:25:37.239 8e4 Level-0 table #3491: started
-2026/04/01-03:25:37.240 8e4 Level-0 table #3491: 49291 bytes OK
-2026/04/01-03:25:37.241 8e4 Delete type=0 #3488
+2026/04/02-00:22:09.051 8eb Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/MANIFEST-000001
+2026/04/02-00:22:09.053 8eb Recovering log #3495
+2026/04/02-00:22:09.054 8eb Reusing old log /home/zatch/.config/vesktop/sessionData/Local Storage/leveldb/003495.log 
+2026/04/02-00:27:27.238 8ea Level-0 table #3500: started
+2026/04/02-00:27:27.239 8ea Level-0 table #3500: 45829 bytes OK
+2026/04/02-00:27:27.240 8ea Delete type=0 #3495
+2026/04/02-00:33:33.623 8ea Level-0 table #3502: started
+2026/04/02-00:33:33.624 8ea Level-0 table #3502: 51574 bytes OK
+2026/04/02-00:33:33.625 8ea Delete type=0 #3499
+2026/04/02-00:33:48.207 8ea Level-0 table #3504: started
+2026/04/02-00:33:48.208 8ea Level-0 table #3504: 38785 bytes OK
+2026/04/02-00:33:48.210 8ea Delete type=0 #3501

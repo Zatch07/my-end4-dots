@@ -23,17 +23,17 @@
 	--corner-text: 'Midnight';
 
 	/* color of status indicators and window controls */
-    --online-indicator: #00687c;     /* change to #23a55a for default green */
+    --online-indicator: #9a4520;     /* change to #23a55a for default green */
 	--dnd-indicator: #ffb4ab;                  /* change to #f13f43 for default red */
-	--idle-indicator: #404565;    /* change to #f0b232 for default yellow */
-	--streaming-indicator: #003641;       /* change to #593695 for default purple */
+	--idle-indicator: #4f471b;    /* change to #f0b232 for default yellow */
+	--streaming-indicator: #591c00;       /* change to #593695 for default purple */
 
 	/* accent colors */
-    --accent-1: #c0c4eb;            /* links */
-	--accent-2: #57d6f6;             /* general unread/mention elements, some icons when active */
-	--accent-3: #57d6f6;             /* accent buttons */
+    --accent-1: #d4c78e;            /* links */
+	--accent-2: #ffb598;             /* general unread/mention elements, some icons when active */
+	--accent-3: #ffb598;             /* accent buttons */
 	--accent-4: #393939;      /* accent buttons when hovered */
-	--accent-5: #57d6f6;   /* accent buttons when clicked */
+	--accent-5: #ffb598;   /* accent buttons when clicked */
 	--mention:  #131313;             /* mentions & mention messages */
 	--mention-hover: #393939; /* mentions & mention messages when hovered */
 
