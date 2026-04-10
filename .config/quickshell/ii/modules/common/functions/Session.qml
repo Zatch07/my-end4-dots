@@ -20,6 +20,7 @@ Singleton {
         Quickshell.execDetached(["loginctl", "lock-session"]);
     }
 
+
     function suspend() {
         Quickshell.execDetached(["bash", "-c", "systemctl suspend || loginctl suspend"]);
     }

@@ -103,7 +103,7 @@ Singleton {
             let totalRx = 0, totalTx = 0
             for (let i = 2; i < netLines.length; i++) {
                 const line = netLines[i].trim()
-                if (line.startsWith('en')) {
+                if (line.startsWith('en') || line.startsWith('wl')) {
                     const cols = line.split(/[:\s]+/)
                     totalRx += Number(cols[1]) || 0
                     totalTx += Number(cols[9]) || 0

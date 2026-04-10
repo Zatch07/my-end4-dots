@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Run Unit Tests') {
+            agent {
+                docker { 
+                    image 'python:3.11-slim' 
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'pip install --no-cache-dir -r requirements.txt'
+                sh 'pytest'
+            }
+        }
+        
+        stage('Build API Image') {
+            steps {
+                sh 'docker build -t python-api:latest .'
+            }
+        }
+        // --- NEW STAGE ADDED HERE ---
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'test-api', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    // Log in securely
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    
+                    // Rename the image to match your Docker Hub repository
+                    sh 'docker tag python-api:latest $DOCKER_USER/python-api:latest'
+                    
+                    // Push to the cloud
+                    sh 'docker push $DOCKER_USER/python-api:latest'
+                }
+            }
+        }
+    }
+}

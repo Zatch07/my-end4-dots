@@ -1,0 +1,8 @@
+/jenkins_home
+
+# venv stuff
+.pytest_cache/
+venv/
+__pycache__/
+
+# dockerfile only needed for building not later

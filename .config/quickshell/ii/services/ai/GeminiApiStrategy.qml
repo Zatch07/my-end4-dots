@@ -21,18 +21,13 @@ ApiStrategy {
             const geminiApiRoleName = (message.role === "assistant") ? "model" : message.role;
             const usingSearch = tools[0]?.google_search !== undefined
             if (!usingSearch && message.functionCall != undefined && message.functionName.length > 0) {
-                const part = {
-                    functionCall: {
-                        "name": message.functionName,
-                    }
-                };
-                // Include thought_signature if it exists (required for Gemini thinking models)
-                if (message.thoughtSignature && message.thoughtSignature.length > 0) {
-                    part.thought_signature = message.thoughtSignature;
-                }
                 return {
                     "role": geminiApiRoleName,
-                    "parts": [part]
+                    "parts": [{
+                        functionCall: {
+                            "name": message.functionName,
+                        }
+                    }]
                 }
             }
             if (!usingSearch && message.functionResponse != undefined && message.functionName.length > 0) {
@@ -135,16 +130,8 @@ ApiStrategy {
             // Function call handling
             if (dataJson.candidates[0]?.content?.parts[0]?.functionCall) {
                 const functionCall = dataJson.candidates[0]?.content?.parts[0]?.functionCall;
-                const thoughtSignature = dataJson.candidates[0]?.content?.parts[0]?.thoughtSignature;
-                
-                // Skip empty function calls
-                if (!functionCall.name || Object.keys(functionCall.args || {}).length === 0) {
-                    return { finished: true };
-                }
-                
                 message.functionName = functionCall.name;
                 message.functionCall = functionCall.name;
-                message.thoughtSignature = thoughtSignature || "";
                 const newContent = `\n\n[[ Function: ${functionCall.name}(${JSON.stringify(functionCall.args, null, 2)}) ]]\n`
                 message.rawContent += newContent;
                 message.content += newContent;

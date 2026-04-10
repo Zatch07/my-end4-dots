@@ -1,0 +1,20 @@
+pipeline {
+    agent any  // any means it can use any agent that is available
+    stages {
+        // first stage that pulls the code
+        stage('Checkout Code') {
+            steps {
+                checkout scm  //source control management usually used for github/git
+            }
+        }
+        //second stage that runs the code in docker
+        stage('Running tests') {
+            agent {
+                docker {
+                    image 'python:3.11-slim'
+                    reuseNode true  //runs the code on the same container that it was checked in
+                }
+            }
+        }
+    }
+}

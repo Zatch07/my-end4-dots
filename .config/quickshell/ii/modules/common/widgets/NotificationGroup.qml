@@ -178,12 +178,12 @@ MouseArea { // Notification group area
                     Layout.fillWidth: true
                     property real fontSize: Appearance.font.pixelSize.smaller
                     property bool showAppName: root.multipleNotifications
-                    implicitHeight: Math.max(topTextRow.implicitHeight, headerButtons.implicitHeight)
+                    implicitHeight: Math.max(topTextRow.implicitHeight, expandButton.implicitHeight)
 
                     RowLayout {
                         id: topTextRow
                         anchors.left: parent.left
-                        anchors.right: headerButtons.left
+                        anchors.right: expandButton.left
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: 5
                         StyledText {
@@ -210,56 +210,18 @@ MouseArea { // Notification group area
                             color: Appearance.colors.colSubtext
                         }
                     }
-                    Row {
-                        id: headerButtons
+                    NotificationGroupExpandButton {
+                        id: expandButton
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
-                        spacing: 5
+                        count: root.notificationCount
+                        expanded: root.expanded
+                        fontSize: topRow.fontSize
+                        onClicked: { root.toggleExpanded() }
+                        altAction: () => { root.toggleExpanded() }
 
-                        RippleButton {
-                            id: dismissGroupButton
-                            visible: root.multipleNotifications
-                            implicitHeight: expandButton.implicitHeight
-                            implicitWidth: expandButton.implicitHeight
-                            
-                            buttonRadius: Appearance.rounding.full
-                            
-                            colBackground: ColorUtils.mix(Appearance.colors.colLayer2, Appearance.colors.colLayer2Hover, 0.5)
-                            colBackgroundHover: Appearance.colors.colLayer2Hover
-                            colRipple: Appearance.colors.colLayer2Active
-                            
-                            onClicked: {
-                                root.destroyWithAnimation()
-                            }
-
-                            contentItem: Item {
-                                anchors.fill: parent
-                                MaterialSymbol {
-                                    anchors.centerIn: parent
-                                    text: "close"
-                                    iconSize: expandButton.iconSize
-                                    color: Appearance.colors.colOnLayer2
-                                    verticalAlignment: Text.AlignVCenter
-                                    horizontalAlignment: Text.AlignHCenter
-                                }
-                            }
-
-                            StyledToolTip {
-                                text: Translation.tr("Dismiss group")
-                            }
-                        }
-
-                        NotificationGroupExpandButton {
-                            id: expandButton
-                            count: root.notificationCount
-                            expanded: root.expanded
-                            fontSize: topRow.fontSize
-                            onClicked: { root.toggleExpanded() }
-                            altAction: () => { root.toggleExpanded() }
-
-                            StyledToolTip {
-                                text: Translation.tr("Tip: right-clicking a group\nalso expands it")
-                            }
+                        StyledToolTip {
+                            text: Translation.tr("Tip: right-clicking a group\nalso expands it")
                         }
                     }
                 }

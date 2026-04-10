@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Run Unit Tests') {
+            agent {
+                docker { 
+                    image 'python:3.11-slim' 
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'pip install --no-cache-dir -r requirements.txt'
+                sh 'pytest'
+            }
+        }
+        
+        stage('Build API Image') {
+            steps {
+                sh 'docker build -t python-api:latest .'
+            }
+        }
+    }
+}

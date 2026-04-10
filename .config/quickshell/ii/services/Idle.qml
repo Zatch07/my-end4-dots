@@ -2,8 +2,6 @@ pragma Singleton
 import qs.modules.common
 import QtQuick
 import Quickshell
-import Quickshell.Io
-import Quickshell.Wayland
 
 /**
  * A nice wrapper for date and time strings.
@@ -11,18 +9,7 @@ import Quickshell.Wayland
 Singleton {
     id: root
 
-    property alias inhibit: idleInhibitor.enabled
-    inhibit: false
-
-    Process {
-        id: inhibitProc
-        command: ["killall", "-STOP", "hypridle"]
-    }
-
-    Process {
-        id: allowProc
-        command: ["killall", "-CONT", "hypridle"]
-    }
+    property bool inhibit: false
 
     Connections {
         target: Persistent
@@ -32,10 +19,10 @@ Singleton {
             } else {
                 Persistent.states.idle.inhibit = root.inhibit;
             }
+            
+            // Sync initial state
             if (root.inhibit) {
-                inhibitProc.running = true;
-            } else {
-                allowProc.running = true;
+                Quickshell.execDetached(["bash", "-c", "killall -STOP hypridle"]);
             }
         }
     }
@@ -46,32 +33,15 @@ Singleton {
         } else {
             root.inhibit = !root.inhibit;
         }
-        Persistent.states.idle.inhibit = root.inhibit;
-
+        
         if (root.inhibit) {
-            inhibitProc.running = true;
+            // Kill hypridle entirely so it forgets its passed timers
+            Quickshell.execDetached(["bash", "-c", "pkill hypridle"]);
         } else {
-            allowProc.running = true;
+            // Respawn a fresh hypridle daemon so it starts counting from zero!
+            Quickshell.execDetached(["bash", "-c", "pkill hypridle; hypridle & pkill -RTMIN+8 waybar"]);
         }
-    }
-
-    IdleInhibitor {
-        id: idleInhibitor
-        window: PanelWindow {
-            // Inhibitor requires a "visible" surface
-            // Wayland strictly enforces dimensions > 0 for this to be valid
-            implicitWidth: 1
-            implicitHeight: 1
-            color: "transparent"
-            // Just in case...
-            anchors {
-                right: true
-                bottom: true
-            }
-            // Make it not interactable
-            mask: Region {
-                item: null
-            }
-        }
+        
+        Persistent.states.idle.inhibit = root.inhibit;
     }
 }

@@ -440,3 +440,22 @@ Added a Git-based backup system to safely track and roll back changes to the ent
 - Successfully migrated **History** and **Extensions** from Thorium to Vivaldi by manually bridging the `Default` profile folders.
 - Since passwords are managed via **Dashlane**, browser encryption keys were safely ignored to maintain a clean Vivaldi Sync setup.
 - Updated all Hyprland keybinds to launch `vivaldi` natively.
+
+---
+
+## 🛠️ April System & UI Hotfixes
+
+### "Time-Travel" Lockscreen & Keep Awake Fix
+*   **What we tried & why it failed:** We initially tried bypassing the 1x1 Wayland window inhibitor by using `killall -STOP hypridle` and `-CONT` to manually "pause" the background sleep daemon. This failed miserably because Linux timers are absolute. When we unpaused via `-CONT`, Hypridle immediately calculated that hours of inactive time had elapsed and executed all of its lock/suspend timeouts simultaneously, instantly freezing the PC on the lockscreen.
+*   **The Fix:** We rewrote `~/.config/quickshell/ii/services/Idle.qml` to completely kill the daemon (`pkill hypridle`) when tracking is turned off, and respawn a fresh instance (`hypridle &`) when turned back on. This ensures all timers start fresh from zero, perfectly skipping the time-travel bug.
+
+### Quickshell Watchdog & UI Deadlocks
+*   **Bug 1 (Terminal Crash):** The Quickshell updates widget crashed the terminal with "Failed to launch child: undefined" because `Config.options.updates.packageManager` was missing from the configuration. Fixed by adding `property string packageManager: "pacman"` into `~/.config/quickshell/ii/modules/common/Config.qml`.
+*   **Bug 2 (Ghost Loops):** The network speed bar indicator was throwing QML loop errors because `networkDownloadSpeed` was missing. Fixed by restoring the `/proc/net/dev` parsing backend inside `~/.config/quickshell/ii/services/ResourceUsage.qml`.
+
+### VS Code Keybind
+*   **What we tried & why it failed:** We initially tried binding `Ctrl + X` to open VS Code. This failed because Hyprland globally hijacks keybinds, meaning we completely broke the system-wide `Ctrl + X` "Cut" clipboard shortcut for every other application.
+*   **The Fix:** We immediately removed `Ctrl + X` and instead updated the standard Text Editor shortcut (`Super + X` in `~/.config/hypr/hyprland/keybinds.conf`) to launch `code` (VS Code) as the default priority!
+### Shell Abbreviations
+- **apps**: Abbreviation for `tui-apps`
+- **quicklinks**: Abbreviation for `quick-links`

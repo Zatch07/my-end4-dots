@@ -1,3 +1,6 @@
-2026/04/02-14:53:27.634 8bc Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/IndexedDB/https_discord.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/04/02-14:53:27.635 8bc Recovering log #111
-2026/04/02-14:53:27.644 8bc Reusing old log /home/zatch/.config/vesktop/sessionData/IndexedDB/https_discord.com_0.indexeddb.leveldb/000111.log 
+2026/04/10-16:08:25.860 8f8 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/IndexedDB/https_discord.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/04/10-16:08:25.861 8f8 Recovering log #116
+2026/04/10-16:08:25.871 8f8 Reusing old log /home/zatch/.config/vesktop/sessionData/IndexedDB/https_discord.com_0.indexeddb.leveldb/000116.log 
+2026/04/10-17:11:43.507 8f7 Level-0 table #122: started
+2026/04/10-17:11:43.516 8f7 Level-0 table #122: 1604665 bytes OK
+2026/04/10-17:11:43.517 8f7 Delete type=0 #116

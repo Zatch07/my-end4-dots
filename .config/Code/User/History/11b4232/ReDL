@@ -1,0 +1,10 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm  //source control management usually used for github/git
+            }
+        }
+    }
+}

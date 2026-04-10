@@ -118,7 +118,7 @@ Singleton {
                 }
                 property JsonObject transparency: JsonObject {
                     property bool enable: false
-                    property bool automatic: true
+                    property bool automatic: false
                     property real backgroundTransparency: 0.11
                     property real contentTransparency: 0.57
                 }
@@ -217,7 +217,7 @@ Singleton {
                     property bool vertical: false
                     property bool autoVertical: false
                     property bool enableWorkspace: true
-                    property real workspaceZoom: 1.07 // Relative to your screen, not wallpaper size
+                    property real workspaceZoom: 1.0 // Relative to wallpaper size
                     property bool enableSidebar: true
                     property real widgetsFactor: 1.2
                 }
@@ -281,9 +281,6 @@ Singleton {
                 }
                 property JsonObject tooltips: JsonObject {
                     property bool clickToShow: false
-                }
-                property JsonObject networkSpeed: JsonObject {
-                    property bool enable: true
                 }
             }
 
@@ -364,7 +361,7 @@ Singleton {
 
             property JsonObject light: JsonObject {
                 property JsonObject night: JsonObject {
-                    property bool automatic: true
+                    property bool automatic: false
                     property string from: "19:00" // Format: "HH:mm", 24-hour time
                     property string to: "06:30"   // Format: "HH:mm", 24-hour time
                     property int colorTemperature: 5000
@@ -577,10 +574,10 @@ Singleton {
 
             property JsonObject updates: JsonObject {
                 property bool enableCheck: true
-                property int checkInterval: 5 // minutes
+                property string packageManager: "pacman"
+                property int checkInterval: 120 // minutes
                 property int adviseUpdateThreshold: 75 // packages
                 property int stronglyAdviseUpdateThreshold: 200 // packages
-                property string packageManager: "yay"
             }
             
             property JsonObject wallpaperSelector: JsonObject {

@@ -1,0 +1,6 @@
+/jenkins_home
+
+# venv stuff
+.pytest_cache/
+venv/
+__pycache__/

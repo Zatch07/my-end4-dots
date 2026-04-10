@@ -1,14 +1,14 @@
-2026/04/01-01:05:07.321 859 Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/MANIFEST-000001
-2026/04/01-01:05:07.321 859 Recovering log #104
-2026/04/01-01:05:07.321 859 Reusing old log /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/000104.log 
-2026/04/01-01:05:07.321 859 Delete type=2 #102
-2026/04/01-01:05:07.325 8e5 Level-0 table #109: started
-2026/04/01-01:05:07.325 8e5 Level-0 table #109: 1401 bytes OK
-2026/04/01-01:05:07.326 8e5 Delete type=0 #104
-2026/04/01-01:05:07.326 859 Manual compaction at level-0 from '\x00\x19\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x19\x00\x00\x05' @ 865 : 1
-2026/04/01-01:05:07.326 859 Compacting 1@0 + 1@1 files
-2026/04/01-01:05:07.327 859 Generated table #110@0: 18 keys, 850 bytes
-2026/04/01-01:05:07.327 859 Compacted 1@0 + 1@1 files => 850 bytes
-2026/04/01-01:05:07.328 859 compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/04/01-01:05:07.328 859 Delete type=2 #109
-2026/04/01-01:05:07.328 859 Manual compaction at level-0 from '\x00\x19\x00\x00\x05' @ 865 : 1 .. '\x00\x1a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/04/02-00:33:32.808 8ba Reusing MANIFEST /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/04/02-00:33:32.808 8ba Recovering log #108
+2026/04/02-00:33:32.808 8ba Reusing old log /home/zatch/.config/vesktop/sessionData/WebStorage/2/IndexedDB/indexeddb.leveldb/000108.log 
+2026/04/02-00:33:32.808 8ba Delete type=2 #106
+2026/04/02-00:33:32.812 8eb Level-0 table #113: started
+2026/04/02-00:33:32.813 8eb Level-0 table #113: 1396 bytes OK
+2026/04/02-00:33:32.814 8eb Delete type=0 #108
+2026/04/02-00:33:32.814 8ba Manual compaction at level-0 from '\x00\x1a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1b\x00\x00\x00' @ 0 : 0; will stop at '\x00\x1a\x00\x00\x05' @ 908 : 1
+2026/04/02-00:33:32.814 8ba Compacting 1@0 + 1@1 files
+2026/04/02-00:33:32.814 8ba Generated table #114@0: 18 keys, 851 bytes
+2026/04/02-00:33:32.814 8ba Compacted 1@0 + 1@1 files => 851 bytes
+2026/04/02-00:33:32.816 8ba compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/04/02-00:33:32.816 8ba Delete type=2 #113
+2026/04/02-00:33:32.816 8ba Manual compaction at level-0 from '\x00\x1a\x00\x00\x05' @ 908 : 1 .. '\x00\x1b\x00\x00\x00' @ 0 : 0; will stop at (end)
