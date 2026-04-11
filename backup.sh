@@ -33,9 +33,7 @@ FOLDERS=(
     "skwd"
     "spicetify"
     "swww"
-    "vesktop"
     "wal"
-    "vivaldi"
     "waybar"
     "wlogout"
 )
@@ -43,8 +41,9 @@ FOLDERS=(
 # Folders that need special filtering (e.g. skip cache dirs)
 # Format: "folder:exclude1:exclude2"
 FILTERED_FOLDERS=(
-    "vivaldi:Cache:Code Cache:GPUCache:GrShaderCache:ShaderCache"
-    "Code/User:workspaceStorage:globalStorage:Cache:CachedData:logs"
+    "vivaldi:Cache:Code Cache:GPUCache:GrShaderCache:ShaderCache:User Data:Service Worker:Default/Storage"
+    "vesktop:sessionData:Crashpad:SingletonLock:SingletonCookie:SingletonSocket:state.json"
+    "Code/User:workspaceStorage:globalStorage:Cache:CachedData:logs:User/History"
 )
 
 # Create config directory structure in the backup repo
