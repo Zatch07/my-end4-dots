@@ -2,8 +2,8 @@
     "discordBranch": "stable",
     "minimizeToTray": true,
     "arRPC": true,
-    "splashColor": "rgb(220, 220, 223)",
-    "splashBackground": "rgb(0, 0, 0)",
+    "splashColor": "rgb(198, 198, 198)",
+    "splashBackground": "rgb(19, 19, 19)",
     "audio": {
         "granularSelect": false,
         "ignoreDevices": true,

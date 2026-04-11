@@ -28,6 +28,7 @@ FOLDERS=(
     "qt5ct"
     "qt6ct"
     "quickshell"
+    "qylock"
     "rofi"
     "skwd"
     "spicetify"
@@ -71,9 +72,23 @@ for entry in "${FILTERED_FOLDERS[@]}"; do
     fi
 done
 
+# Backup User scripts and Cursors
+if [ -d "${HOME}/.local/bin" ]; then
+    echo "Backing up .local/bin..."
+    mkdir -p ".local/bin"
+    rsync -aP --delete "${HOME}/.local/bin/" ".local/bin/"
+fi
+
+if [ -d "${HOME}/.icons" ]; then
+    echo "Backing up .icons (Cursors)..."
+    mkdir -p ".icons"
+    rsync -aP --delete "${HOME}/.icons/" ".icons/"
+fi
+
 # Backup standalone files from home directory
 STANDALONE_FILES=(
     "END4_CHANGELOG.md"
+    ".quicklinks"
 )
 
 for file in "${STANDALONE_FILES[@]}"; do

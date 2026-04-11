@@ -27,6 +27,8 @@ if status is-interactive
     alias apps 'tui-apps'
     alias quicklinks 'quick-links'
     alias finder 'finder'
+    alias lock-change '~/.config/qylock/change_theme.sh'
+    alias cursor-change '~/.local/bin/cursor-picker'
 
 end
 
