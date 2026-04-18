@@ -15,30 +15,56 @@ Item {
 
     readonly property string thumbDir: "file://" + FileUtils.trimFileProtocol(Directories.genericCache) + "/wallpaper_picker/thumbs"
     readonly property string srcDir: FileUtils.trimFileProtocol(Directories.pictures) + "/Wallpapers"
+    readonly property string weDir: FileUtils.trimFileProtocol(Directories.pictures) + "/Wallpapers/WallpaperEngine"
     property bool useDarkMode: Appearance.m3colors.darkmode
 
-    // Slant geometry — matches the original dotfile exactly
+    // State for tabs: 0 = Static, 1 = Wallpaper Engine
+    property int currentTab: 0
+    onCurrentTabChanged: {
+        if (view) {
+            view.currentIndex = 0;
+            view.positionViewAtIndex(0, ListView.Beginning);
+        }
+    }
+
+    // Slant geometry
     readonly property int itemWidth: 300
     readonly property int itemHeight: 420
     readonly property int borderWidth: 3
     readonly property real skewFactor: -0.35
 
-    // Jump to the thumbnail that matches the currently active wallpaper
     property bool _focusDone: false
     function focusCurrentWallpaper() {
         if (_focusDone) return
         const currentWall = Config.options.background.wallpaperPath
         if (!currentWall || currentWall.length === 0) return
-        if (thumbModel.status !== FolderListModel.Ready) return
 
-        const currentName = currentWall.split("/").pop()
-        const targetThumb = currentName + ".jpg"
-        for (let i = 0; i < thumbModel.count; i++) {
-            if (thumbModel.get(i, "fileName") === targetThumb) {
-                view.currentIndex = i
-                view.positionViewAtIndex(i, ListView.Center)
-                _focusDone = true
-                return
+        if (currentWall.indexOf("[WE-") !== -1) {
+            if (weModel.status !== FolderListModel.Ready) return
+            // Ensure we are on the WE tab
+            if (root.currentTab !== 1) root.currentTab = 1
+            const currentDirName = currentWall.split("/").pop()
+            
+            for (let i = 0; i < weModel.count; i++) {
+                if (weModel.get(i, "fileName") === currentDirName) {
+                    view.currentIndex = i
+                    view.positionViewAtIndex(i, ListView.Center)
+                    _focusDone = true
+                    return
+                }
+            }
+        } else {
+            if (thumbModel.status !== FolderListModel.Ready) return
+            
+            const currentName = currentWall.split("/").pop()
+            const targetThumb = currentName + ".jpg"
+            for (let i = 0; i < thumbModel.count; i++) {
+                if (thumbModel.get(i, "fileName") === targetThumb) {
+                    view.currentIndex = i
+                    view.positionViewAtIndex(i, ListView.Center)
+                    _focusDone = true
+                    return
+                }
             }
         }
     }
@@ -54,29 +80,156 @@ Item {
         } else if (event.key === Qt.Key_Right) {
             view.incrementCurrentIndex()
             event.accepted = true
+        } else if (event.key === Qt.Key_A) {
+            // Switch to Static tab
+            root.currentTab = 0
+            event.accepted = true
+        } else if (event.key === Qt.Key_D) {
+            // Switch to WE tab
+            root.currentTab = 1
+            event.accepted = true
         } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
             if (view.currentItem) view.currentItem.pickWallpaper()
             event.accepted = true
         }
     }
 
-    // ── Thumbnail folder model ──────────────────────────────────────────────
-    // Reads from ~/.cache/wallpaper_picker/thumbs/ — small 320x180 JPEGs,
-    // NOT the raw 20 MB wallpapers. Naming rule: <original-filename>.jpg
-    //   "0001.png"      → "0001.png.jpg"
-    //   "0020.jpg"      → "0020.jpg.jpg"
-    //   "video.mp4"     → "000_video.mp4.jpg"
+    // ── Tab Bar ─────────────────────────────────────────────────────────────
+    Row {
+        id: tabBar
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        
+        // INCREASE THIS: Pushes the tabs further down from the top of the screen
+        anchors.topMargin: 10 
+        
+        spacing: 30
+        height: 45
+        z: 20
+
+        // Tab: Static
+        Item {
+            width: 200
+            height: parent.height
+
+            Rectangle {
+                anchors.fill: parent
+                // Darker background when selected
+                color: root.currentTab === 0 ? "#B0000000" : "#20000000"
+                border.color: root.currentTab === 0 ? "white" : "#40FFFFFF"
+                border.width: 2
+                
+                // Apply the exact same slant as the cards!
+                transform: Matrix4x4 {
+                    property real s: root.skewFactor
+                    matrix: Qt.matrix4x4(1, s, 0, 0,
+                                         0, 1, 0, 0,
+                                         0, 0, 1, 0,
+                                         0, 0, 0, 1)
+                }
+
+                Behavior on color { ColorAnimation { duration: 250 } }
+                Behavior on border.color { ColorAnimation { duration: 250 } }
+            }
+
+            Text {
+                anchors.centerIn: parent
+                text: "Static & Web"
+                font.pixelSize: 20
+                font.bold: root.currentTab === 0
+                color: root.currentTab === 0 ? "white" : "#A0FFFFFF"
+                Behavior on color { ColorAnimation { duration: 250 } }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: root.currentTab = 0
+                // Fix the "Ghost Click": Make the clickable area visually identical to the slanted box
+                transform: Matrix4x4 {
+                    property real s: root.skewFactor
+                    matrix: Qt.matrix4x4(1, s, 0, 0,
+                                         0, 1, 0, 0,
+                                         0, 0, 1, 0,
+                                         0, 0, 0, 1)
+                }
+            }
+        }
+
+        // Tab: Wallpaper Engine
+        Item {
+            width: 240
+            height: parent.height
+
+            Rectangle {
+                anchors.fill: parent
+                color: root.currentTab === 1 ? "#B0000000" : "#20000000"
+                border.color: root.currentTab === 1 ? "white" : "#40FFFFFF"
+                border.width: 2
+                
+                transform: Matrix4x4 {
+                    property real s: root.skewFactor
+                    matrix: Qt.matrix4x4(1, s, 0, 0,
+                                         0, 1, 0, 0,
+                                         0, 0, 1, 0,
+                                         0, 0, 0, 1)
+                }
+
+                Behavior on color { ColorAnimation { duration: 250 } }
+                Behavior on border.color { ColorAnimation { duration: 250 } }
+            }
+
+            Text {
+                anchors.centerIn: parent
+                text: "Wallpaper Engine"
+                font.pixelSize: 20
+                font.bold: root.currentTab === 1
+                color: root.currentTab === 1 ? "white" : "#A0FFFFFF"
+                Behavior on color { ColorAnimation { duration: 250 } }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: root.currentTab = 1
+                // Fix the "Ghost Click": Make the clickable area visually identical to the slanted box
+                transform: Matrix4x4 {
+                    property real s: root.skewFactor
+                    matrix: Qt.matrix4x4(1, s, 0, 0,
+                                         0, 1, 0, 0,
+                                         0, 0, 1, 0,
+                                         0, 0, 0, 1)
+                }
+            }
+        }
+    }
+
+    // ── Models ──────────────────────────────────────────────────────────────
+    
+    // Model 0: Static Wallpapers (using pre-generated thumbnails)
     FolderListModel {
         id: thumbModel
         folder: root.thumbDir
-        nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp"]
+        nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp", "*.avif", "*.gif"]
         showDirs: false
         sortField: FolderListModel.Name
 
-        // Only attempt focus when the model is fully ready — prevents the
-        // infinite onCountChanged → focusCurrentWallpaper → layout shift loop.
         onStatusChanged: {
-            if (status === FolderListModel.Ready) {
+            if (status === FolderListModel.Ready && root.currentTab === 0) {
+                root.focusCurrentWallpaper()
+            }
+        }
+    }
+
+    // Model 1: Wallpaper Engine (reads directories directly)
+    FolderListModel {
+        id: weModel
+        folder: "file://" + root.weDir
+        showDirs: true
+        showFiles: false
+        showDotAndDotDot: false
+        sortField: FolderListModel.Name
+        
+        onStatusChanged: {
+            if (status === FolderListModel.Ready && root.currentTab === 1) {
                 root.focusCurrentWallpaper()
             }
         }
@@ -85,7 +238,15 @@ Item {
     // ── Horizontal slanted gallery ──────────────────────────────────────────
     ListView {
         id: view
-        anchors.fill: parent
+        anchors.top: tabBar.bottom
+        anchors.topMargin: 0 
+        anchors.bottom: parent.bottom
+        
+        // INCREASE THIS: Pushes the bottom edge of the list up, giving names space
+        anchors.bottomMargin: 80
+        
+        anchors.left: parent.left
+        anchors.right: parent.right
 
         spacing: 0
         orientation: ListView.Horizontal
@@ -98,7 +259,8 @@ Item {
         preferredHighlightEnd:   (width / 2) + (root.itemWidth / 2) + 60
         highlightMoveDuration: 300
 
-        model: thumbModel
+        // Dynamically switch models
+        model: root.currentTab === 0 ? thumbModel : weModel
 
         delegate: Item {
             id: delegateRoot
@@ -107,25 +269,44 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
 
             readonly property bool isCurrent: ListView.isCurrentItem
-            readonly property bool isVideo: fileName.startsWith("000_")
+            readonly property bool isWE: root.currentTab === 1
+            readonly property bool isVideo: isWE ? false : fileName.startsWith("000_")
 
-            // ── Path reconstruction ──────────────────────────────────────
-            // Thumbnails are ALWAYS named <original-filename>.jpg
-            // Strip "000_" prefix (video) then strip trailing ".jpg" (4 chars).
-            //   "0001.png.jpg"       → "0001.png"   ✓
-            //   "0020.jpg.jpg"       → "0020.jpg"   ✓
-            //   "000_video.mp4.jpg"  → "video.mp4"  ✓
-            readonly property string originalName: {
+            // ── Path resolution ──────────────────────────────────────
+            
+            // Reconstruct static original path from thumbnail
+            readonly property string staticOriginalName: {
+                if (isWE) return ""
                 let n = fileName
                 if (n.startsWith("000_")) n = n.substring(4)
-                return n.substring(0, n.length - 4)
+                return n.substring(0, n.lastIndexOf("."))
             }
-            readonly property string srcPath: root.srcDir + "/" + originalName
+            
+            // The file path that will be passed to `switchwall.sh`
+            // For WE wallpapers, we pass the absolute path of the directory!
+            readonly property string srcPath: isWE ? decodeURIComponent(FileUtils.trimFileProtocol(fileUrl.toString())) : (root.srcDir + "/" + staticOriginalName)
+            
+            // --- SMART FALLBACK LOGIC ---
+            property int weExtIndex: 0
+            property var weExtensions: ["/preview.jpg", "/preview.gif", "/preview.png"]
+            
+            readonly property string dynamicImageSource: {
+                if (isWE) {
+                    return fileUrl.toString() + weExtensions[weExtIndex]
+                }
+                return fileUrl.toString()
+            }
 
             z: isCurrent ? 10 : 1
 
             function pickWallpaper() {
-                Wallpapers.select(srcPath, root.useDarkMode)
+                // If Wallpaper Engine item, pass the folder path DIRECTLY to apply.
+                // Otherwise, Wallpapers.select thinks it's a folder to browse and skips execution!
+                if (isWE) {
+                    Wallpapers.apply(srcPath, root.useDarkMode)
+                } else {
+                    Wallpapers.select(srcPath, root.useDarkMode)
+                }
                 GlobalStates.wallpaperSelectorOpen = false
             }
 
@@ -157,13 +338,22 @@ Item {
                                          0, 0, 0, 1)
                 }
 
-                // Thin coloured border — thumbnail stretched behind inner clip
+                // 1. Thin coloured border based on 1x1 blur of the image
                 Image {
                     anchors.fill: parent
-                    source: fileUrl
+                    source: delegateRoot.dynamicImageSource
                     sourceSize: Qt.size(1, 1)
                     fillMode: Image.Stretch
                     asynchronous: true
+                    
+                    // If the .jpg fails, QML throws an error. We catch it and try .gif, then .png!
+                    onStatusChanged: {
+                        if (status === Image.Error && delegateRoot.isWE) {
+                            if (delegateRoot.weExtIndex < 2) {
+                                delegateRoot.weExtIndex++
+                            }
+                        }
+                    }
                 }
 
                 // Inner content — clip + counter-skew keeps image upright
@@ -174,15 +364,22 @@ Item {
 
                     Rectangle { anchors.fill: parent; color: "black" }
 
-                    Image {
+                    // 2. The actual crisp image (Now supports animated GIFs!)
+                    AnimatedImage {
                         anchors.centerIn: parent
+                        // A slight offset so the horizontal center aligns better due to skew
                         anchors.horizontalCenterOffset: -50
+                        
                         width: parent.width + (parent.height * Math.abs(root.skewFactor)) + 50
                         height: parent.height
                         fillMode: Image.PreserveAspectCrop
-                        source: fileUrl
+                        
+                        source: delegateRoot.dynamicImageSource
                         asynchronous: true
-
+                        
+                        // Optimization: Only play the GIF if this specific card is selected!
+                        playing: delegateRoot.isCurrent 
+                        
                         transform: Matrix4x4 {
                             property real s: -root.skewFactor
                             matrix: Qt.matrix4x4(1, s, 0, 0,
@@ -192,15 +389,15 @@ Item {
                         }
                     }
 
-                    // ▶ Play badge for video wallpapers
+                    // ▶ Play badge (Visible for standard videos OR all WE items)
                     Rectangle {
-                        visible: delegateRoot.isVideo
+                        visible: delegateRoot.isVideo || delegateRoot.isWE
                         anchors.top: parent.top
                         anchors.right: parent.right
                         anchors.margins: 10
                         width: 32; height: 32
                         radius: 6
-                        color: "#60000000"
+                        color: "#80000000"
 
                         transform: Matrix4x4 {
                             property real s: -root.skewFactor
@@ -215,7 +412,8 @@ Item {
                             anchors.margins: 8
                             onPaint: {
                                 var ctx = getContext("2d")
-                                ctx.fillStyle = "#EEFFFFFF"
+                                // If WE, use a WE aesthetic green glow!
+                                ctx.fillStyle = delegateRoot.isWE ? "#88FF88" : "#EEFFFFFF"
                                 ctx.beginPath()
                                 ctx.moveTo(4, 0)
                                 ctx.lineTo(14, 8)
@@ -226,6 +424,27 @@ Item {
                         }
                     }
                 }
+            }
+            
+            // Wallpaper Title Label at the bottom (only really needed for WE items)
+            Text {
+                visible: delegateRoot.isCurrent && delegateRoot.isWE
+                // Anchor the TOP of the text to the BOTTOM of the slanted card
+                anchors.top: parent.bottom 
+                anchors.topMargin: 15     
+                anchors.horizontalCenter: parent.horizontalCenter
+                
+                // Keep it strictly contained to the width of its parent card so it cleanly wraps!
+                width: parent.width 
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WordWrap
+                
+                // Cleanup the folder name to just the title (removes "[WE-ID]")
+                text: fileName.replace(/\s*\[WE-\d+\]$/, "")
+                font.pixelSize: 20
+                font.bold: true
+                color: "white"
+                style: Text.Outline; styleColor: "black"
             }
         }
     }

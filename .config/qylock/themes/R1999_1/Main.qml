@@ -422,6 +422,7 @@ Rectangle {
             
             TextInput {
                 id: passInput
+                        Component.onCompleted: forceActiveFocus()
                 anchors.right: parent.right
                 anchors.left: parent.left
                 anchors.top: parent.top

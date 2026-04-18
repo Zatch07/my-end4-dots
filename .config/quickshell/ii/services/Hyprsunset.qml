@@ -87,8 +87,12 @@ Singleton {
     }
 
     function load() {
-        root.startHyprsunset();
-        root.ensureState();
+        if (!root.automatic) {
+            root.disableTemperature();
+        } else {
+            root.startHyprsunset();
+            root.ensureState();
+        }
     }
 
     Timer {
@@ -136,10 +140,12 @@ Singleton {
             id: stateCollector
             onStreamFinished: {
                 const output = stateCollector.text.trim();
-                if (output.length == 0 || output.startsWith("Couldn't"))
+                const temp = parseInt(output);
+                if (isNaN(temp) || temp >= 6500) {
                     root.temperatureActive = false;
-                else
-                    root.temperatureActive = (output != "6500"); // 6500 is the default when off
+                } else {
+                    root.temperatureActive = true;
+                }
                 // console.log("[Hyprsunset] Fetched state:", output, "->", root.temperatureActive);
             }
         }

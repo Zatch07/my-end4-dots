@@ -201,6 +201,7 @@ Rectangle {
 
                 TextInput {
                     id: passwordField
+                        Component.onCompleted: forceActiveFocus()
                     anchors.left: parent.left; anchors.leftMargin: 2 * s
                     anchors.right: submitBtn.left; anchors.rightMargin: 12 * s
                     anchors.verticalCenter: parent.verticalCenter; anchors.verticalCenterOffset: -1 * s

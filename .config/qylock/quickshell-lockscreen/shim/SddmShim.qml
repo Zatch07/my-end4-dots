@@ -166,7 +166,7 @@ Item {
         function login(user, password, sessionIndex) {
             pam.user = user;
             pam.pendingPassword = password;
-            pam.start();
+            pam.start(); 
         }
 
         function reboot() { Quickshell.execDetached(["bash", "-c", "if [ -d /run/systemd/system ]; then systemctl reboot; else loginctl reboot; fi"]); }
@@ -177,9 +177,9 @@ Item {
         id: pam
         property string pendingPassword: ""
 
-        onResponseRequiredChanged: {
-            if (responseRequired && pendingPassword !== "") {
-                respond(pendingPassword);
+        onPamMessage: {
+            if (this.responseRequired && pendingPassword !== "") {
+                this.respond(pendingPassword);
                 pendingPassword = "";
             }
         }
@@ -188,7 +188,10 @@ Item {
             if (result === PamResult.Success) {
                 shim.sddm.loginSucceeded();
                 Quickshell.execDetached(["loginctl", "unlock-session"]);
-                // Notify success handlers
+                
+                // CRITICAL FIX: Tell the UI to close! 
+                // Without this, the session unlocks but the lockscreen stays on your screen.
+                Quickshell.exit(0); 
             } else {
                 shim.sddm.loginFailed();
             }

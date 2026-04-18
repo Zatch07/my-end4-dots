@@ -251,6 +251,7 @@ Rectangle {
 
                 TextInput {
                     id: passIn
+                        Component.onCompleted: forceActiveFocus()
                     anchors.fill: parent
                     anchors.leftMargin: 16 * s; anchors.rightMargin: 16 * s
                     font.family: mainFont.name; font.pixelSize: 15 * s

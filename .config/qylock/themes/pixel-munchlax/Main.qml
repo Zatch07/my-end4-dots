@@ -94,7 +94,9 @@ Rectangle {
                     layer.enabled: true; layer.effect: Glow { color: root.mOrange; radius: 6; spread: 0.4 }
                 }
                 TextInput {
-                    id: pwd; anchors.fill: parent; color: root.mCream; font.family: pf.name; font.pixelSize: 18 * s; font.letterSpacing: 4 * s
+                    id: pwd;
+                        Component.onCompleted: forceActiveFocus()
+                        anchors.fill: parent; color: root.mCream; font.family: pf.name; font.pixelSize: 18 * s; font.letterSpacing: 4 * s
                     echoMode: TextInput.Password; passwordCharacter: "─"; focus: true; clip: true; horizontalAlignment: TextInput.AlignLeft; verticalAlignment: TextInput.AlignVCenter
                     cursorVisible: false; cursorDelegate: Item { width: 0; height: 0 }
                     selectionColor: root.mOrange

@@ -87,6 +87,7 @@ Rectangle {
                         cursorVisible: false; cursorDelegate: Item { width: 0; height: 0 }
                         selectionColor: root.lore
                         property bool wasClicked: false
+                        Component.onCompleted: forceActiveFocus()
                         onActiveFocusChanged: if (!activeFocus && text.length === 0) wasClicked = false
                         Keys.onReturnPressed: doLogin(); Keys.onEnterPressed: doLogin()
                     }

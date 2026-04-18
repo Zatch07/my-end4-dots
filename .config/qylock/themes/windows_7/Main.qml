@@ -53,7 +53,7 @@ Rectangle {
             statusLabel.color  = "#c8dce8"
             errorMsg.text      = "The password is incorrect. Please try again."
             errorMsg.visible   = true
-            passwordField.text = ""
+            inputFocus.text = ""
             shakeAnim.start()
         }
     }
@@ -165,7 +165,13 @@ Rectangle {
                     z: 5
                     antialiasing: true
 
-                    property var pfpSource: Image { id: pfpImg; source: "pfp.png"; visible: false; onStatusChanged: if (status == Image.Ready) pfpCanvas.requestPaint() }
+                    property var pfpSource: null
+                    Image {
+                        id: pfpImg
+                        source: "pfp.png"
+                        visible: false
+                        onStatusChanged: if (status == Image.Ready) pfpCanvas.requestPaint()
+                    }
 
                     onPaint: {
                         var ctx = getContext("2d");
@@ -288,6 +294,7 @@ Rectangle {
 
                 TextInput {
                     id: inputFocus
+                        Component.onCompleted: forceActiveFocus()
                     anchors.fill: parent; anchors.leftMargin: 6 * s; anchors.rightMargin: 6 * s
                     verticalAlignment: TextInput.AlignVCenter
                     font.family: root.customFontName; font.pixelSize: 13 * s; color: "transparent"
@@ -521,7 +528,7 @@ Rectangle {
                 Text {
                     id: sessionPillText
                     anchors.centerIn: parent
-                text: (sessionModel && sessionModel.count > root.sessionIndex && root.sessionIndex >= 0)
+                text: (sessionModel && sessionModel.rowCount() > root.sessionIndex && root.sessionIndex >= 0)
                       ? sessionHelper.currentItem.sName : "Session"
                     font.family: root.customFontName
                     font.pixelSize: 12 * s
@@ -561,7 +568,7 @@ Rectangle {
         errorMsg.visible = false
         var uname = (userList.currentItem && userList.currentItem.uLogin)
                     ? userList.currentItem.uLogin : userModel.lastUser
-        sddm.login(uname, passwordField.text, root.sessionIndex)
+        sddm.login(uname, inputFocus.text, root.sessionIndex)
     }
 
     component Win7PowerBtn: Item {

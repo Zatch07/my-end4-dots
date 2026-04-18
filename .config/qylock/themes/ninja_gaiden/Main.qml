@@ -413,6 +413,7 @@ Rectangle {
                     anchors.fill: parent
                     TextInput {
                         id: pwInput
+                        Component.onCompleted: forceActiveFocus()
                         width: parent.width - 28 * s; height: parent.height
                         anchors.left: parent.left; anchors.leftMargin: 14 * s
                         anchors.verticalCenter: parent.verticalCenter

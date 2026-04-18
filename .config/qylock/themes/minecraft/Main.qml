@@ -145,7 +145,9 @@ Rectangle {
             McTextField {
                 id: passField; width: parent.width; height: 42 * s; inputRef: passInput
                 TextInput {
-                    id: passInput; anchors.fill: parent; anchors.leftMargin: 12 * s; anchors.rightMargin: 12 * s
+                    id: passInput
+                    Component.onCompleted: forceActiveFocus()
+                    anchors.fill: parent; anchors.leftMargin: 12 * s; anchors.rightMargin: 12 * s
                     echoMode: TextInput.Password; passwordCharacter: "*"; color: "white"
                     font.family: mcFont.name; font.pixelSize: 18 * s; font.letterSpacing: 4 * s
                     verticalAlignment: TextInput.AlignVCenter; clip: true; focus: true

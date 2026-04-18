@@ -16,14 +16,14 @@
   --theme-primary-text-030: #919191 !important;
 
   /* ACCENT - For Icons & Active Elements */
-  --theme-accent: #91cdff !important;
-  --theme-accent-text: #003350 !important;
+  --theme-accent: #f0c048 !important;
+  --theme-accent-text: #3f2e00 !important;
 
   /* ICON & FORM OVERRIDES */
-  --form-icon: #91cdff !important;
-  --form-icon-checked: #91cdff !important;
-  --icon-color: #91cdff !important;
-  --form-icon-symbol: #003350 !important;
+  --form-icon: #f0c048 !important;
+  --form-icon-checked: #f0c048 !important;
+  --icon-color: #f0c048 !important;
+  --form-icon-symbol: #3f2e00 !important;
   --form-group-border: #474747 !important;
 
   /* MISC UI Polish */

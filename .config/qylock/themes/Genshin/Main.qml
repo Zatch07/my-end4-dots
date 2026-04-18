@@ -244,6 +244,7 @@ Rectangle {
                         
                         TextInput {
                             id: passIn
+                        Component.onCompleted: forceActiveFocus()
                             anchors.fill: parent; anchors.leftMargin: 20 * s; anchors.rightMargin: 20 * s
                             font.family: mainFont.name; font.pixelSize: 20 * s; color: root.gTextMain
                             echoMode: TextInput.Password; passwordCharacter: "✦"
@@ -317,7 +318,7 @@ Rectangle {
 
                         // Session name — centered
                         Text {
-                            text: (sessionModel && sessionModel.count > root.sessionIndex && root.sessionIndex >= 0)
+                            text: (sessionModel && sessionModel.rowCount() > root.sessionIndex && root.sessionIndex >= 0)
                                   ? sessionHelper.currentItem.sName : "Select Realm"
                             anchors.centerIn: parent
                             font.family: mainFont.name

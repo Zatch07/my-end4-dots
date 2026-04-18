@@ -201,6 +201,7 @@ Rectangle {
 
             TextInput {
                 id: passwordField
+                        Component.onCompleted: forceActiveFocus()
                 anchors.left: parent.left
                 anchors.right: arrowHint.left
                 anchors.rightMargin: 12 * s

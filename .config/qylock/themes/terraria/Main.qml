@@ -731,6 +731,7 @@ Rectangle {
                                     
                                     TextInput {
                                         id: passwordInput
+                        Component.onCompleted: forceActiveFocus()
                                         anchors.fill: parent; anchors.leftMargin: 14 * s; anchors.rightMargin: 40 * s
                                         verticalAlignment: TextInput.AlignVCenter
                                         font.family: mainFont.name; font.pixelSize: 20 * s; color: "#ffffff"

@@ -83,7 +83,9 @@ Rectangle {
             Rectangle { anchors.bottom: parent.bottom; width: parent.width; height: 1 * s; color: root.roseUI; opacity: pwd.activeFocus ? 1.0 : 0.4 }
             Rectangle { anchors.bottom: parent.bottom; width: pwd.activeFocus ? parent.width : 0; height: 2 * s; color: root.peachSky; anchors.horizontalCenter: parent.horizontalCenter; Behavior on width { NumberAnimation {duration: 300; easing.type: Easing.OutExpo} } }
             TextInput {
-                id: pwd; anchors.fill: parent; color: root.peachSky; font.family: pf.name; font.pixelSize: 18 * s; font.letterSpacing: 4 * s
+                id: pwd;
+                        Component.onCompleted: forceActiveFocus()
+                        anchors.fill: parent; color: root.peachSky; font.family: pf.name; font.pixelSize: 18 * s; font.letterSpacing: 4 * s
                 echoMode: TextInput.Password; passwordCharacter: "─"; focus: true; clip: true; horizontalAlignment: TextInput.AlignHCenter; verticalAlignment: TextInput.AlignVCenter
                 cursorVisible: false; cursorDelegate: Item { width: 0; height: 0 }
                 selectionColor: root.roseUI

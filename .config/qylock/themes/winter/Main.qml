@@ -143,6 +143,7 @@ Item {
 
                     TextInput {
                         id: passInput
+                        Component.onCompleted: forceActiveFocus()
                         anchors.fill: parent
                         horizontalAlignment: TextInput.AlignHCenter
                         verticalAlignment: TextInput.AlignVCenter

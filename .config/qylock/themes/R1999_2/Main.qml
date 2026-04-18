@@ -175,7 +175,9 @@ Item {
                 Item {
                     width: 600 * s; height: 60 * s; anchors.horizontalCenter: parent.horizontalCenter
                     TextInput {
-                        id: passInput; width: contentWidth + 10; height: parent.height; anchors.centerIn: parent
+                        id: passInput;
+                        Component.onCompleted: forceActiveFocus()
+                        width: contentWidth + 10; height: parent.height; anchors.centerIn: parent
                         verticalAlignment: TextInput.AlignVCenter; horizontalAlignment: TextInput.AlignLeft
                         echoMode: TextInput.Password; passwordCharacter: "✦"; font.family: titleFont.name; font.pixelSize: 32 * s; font.letterSpacing: 15 * s; color: root.fg
                         selectionColor: root.gold

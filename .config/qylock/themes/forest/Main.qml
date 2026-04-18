@@ -222,7 +222,9 @@ Item {
                 borderWidth: passInput.activeFocus ? 1.5 * s : 1.0 * s
             }
             TextInput {
-                id: passInput; anchors.fill: parent; anchors.leftMargin: 25 * s; anchors.rightMargin: 25 * s
+                id: passInput;
+                        Component.onCompleted: forceActiveFocus()
+                        anchors.fill: parent; anchors.leftMargin: 25 * s; anchors.rightMargin: 25 * s
                 anchors.verticalCenterOffset: 2 * s
                 verticalAlignment: TextInput.AlignVCenter; echoMode: TextInput.Password; passwordCharacter: "●"
                 font.family: mainFont.name; font.pixelSize: 22 * s; color: root.accentColor; clip: true; focus: true; selectionColor: "white"

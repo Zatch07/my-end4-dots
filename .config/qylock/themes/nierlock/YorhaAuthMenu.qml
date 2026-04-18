@@ -87,6 +87,7 @@ Item {
                 anchors.fill: parent
                 color: "transparent"
                 focus: true
+                Component.onCompleted: forceActiveFocus()
                 KeyNavigation.up: btnLogout
                 KeyNavigation.down: btnPower
                 KeyNavigation.tab: btnPower

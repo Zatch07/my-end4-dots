@@ -390,6 +390,7 @@ Rectangle {
 
                     TextInput {
                         id: passIn
+                        Component.onCompleted: forceActiveFocus()
                         anchors.fill: parent; anchors.bottomMargin: 4 * s
                         font.family: mainFont.name; font.pixelSize: 18 * s
                         color: "white"; echoMode: TextInput.Password; passwordCharacter: "✦"

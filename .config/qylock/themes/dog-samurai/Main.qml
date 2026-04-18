@@ -326,6 +326,7 @@ Item {
                         }
                         TextInput {
                             id: passInput
+                        Component.onCompleted: forceActiveFocus()
                             anchors.fill: parent
                             anchors.leftMargin: 22 * s
                             anchors.rightMargin: 100 * s
