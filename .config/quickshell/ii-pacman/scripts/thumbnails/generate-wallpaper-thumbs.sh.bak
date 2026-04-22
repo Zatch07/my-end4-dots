@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+# generate-wallpaper-thumbs.sh
+# Generates 854x480 (480p) JPEG thumbnails for the slanted wallpaper picker.
+# Naming convention: <original-filename>.jpg  (extension always appended, never replaced)
+#   e.g. "0001.png" -> "0001.png.jpg"
+#        "0020.jpg" -> "0020.jpg.jpg"
+#        "video.mp4" -> "000_video.mp4.jpg"  (000_ prefix marks video)
+#
+# Only generates thumbnails for files that don't already have a thumb.
+# Usage: ./generate-wallpaper-thumbs.sh [--wall-dir <path>]
+
+WALL_DIR="${HOME}/Pictures/Wallpapers"
+THUMB_DIR="${HOME}/.cache/wallpaper_picker/thumbs"
+THUMB_W=854
+THUMB_H=480
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --wall-dir|-d)
+            WALL_DIR="$2"
+            shift 2
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
+mkdir -p "$THUMB_DIR"
+
+process_image() {
+    local src="$1"
+    local name
+    name="$(basename "$src")"
+    # Always APPEND .jpg — never replace. e.g. "0001.png" -> "0001.png.jpg"
+    local thumb="${THUMB_DIR}/${name}.jpg"
+
+    if [ -f "$thumb" ]; then
+        return 0
+    fi
+
+    echo "Thumbing: $name"
+    magick "$src" \
+        -thumbnail "${THUMB_W}x${THUMB_H}^" \
+        -gravity center \
+        -extent "${THUMB_W}x${THUMB_H}" \
+        -quality 88 \
+        "$thumb" 2>/dev/null
+    echo "FILE $thumb"
+}
+
+process_video() {
+    local src="$1"
+    local name
+    name="$(basename "$src")"
+    # Prefix video thumbs with 000_ so QML detects them as videos
+    # Also always APPEND .jpg
+    local thumb="${THUMB_DIR}/000_${name}.jpg"
+
+    if [ -f "$thumb" ]; then
+        return 0
+    fi
+
+    echo "Thumbing video: $name"
+    ffmpeg -y -ss 00:00:01 -i "$src" -vframes 1 \
+        -vf "scale=${THUMB_W}:${THUMB_H}:force_original_aspect_ratio=increase,crop=${THUMB_W}:${THUMB_H}" \
+        -q:v 3 "$thumb" 2>/dev/null
+    echo "FILE $thumb"
+}
+
+IMAGE_EXTS=("jpg" "jpeg" "png" "webp" "avif" "bmp")
+VIDEO_EXTS=("mp4" "webm" "mkv" "mov" "avi")
+
+shopt -s nullglob nocaseglob
+
+for ext in "${IMAGE_EXTS[@]}"; do
+    for f in "${WALL_DIR}"/*.${ext}; do
+        [ -f "$f" ] || continue
+        process_image "$f" &
+    done
+done
+
+for ext in "${VIDEO_EXTS[@]}"; do
+    for f in "${WALL_DIR}"/*.${ext}; do
+        [ -f "$f" ] || continue
+        process_video "$f" &
+    done
+done
+
+wait
+echo "All thumbnails generated. Total: $(ls "$THUMB_DIR" | wc -l)"

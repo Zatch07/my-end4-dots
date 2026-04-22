@@ -7,6 +7,6 @@ we_args=(--fps 60)
 while read -r monitor; do
     we_args+=(--screen-root "$monitor")
 done < <(hyprctl monitors -j | jq -r '.[] | .name')
-we_args+=("/home/zatch/Pictures/Wallpapers/WallpaperEngine/Boy with the Lightning [WE-2333923785]")
+we_args+=("/home/zatch/Pictures/Wallpapers/WallpaperEngine/Hunt Showdown Official [WE-3544229853]")
 
 /usr/bin/linux-wallpaperengine "${we_args[@]}" > "/home/zatch/.local/state/quickshell/user/generated/linux_we.log" 2>&1 &

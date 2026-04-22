@@ -1,30 +1,30 @@
 :root {
   /* BACKGROUNDS - Using Matugen Surface Shades */
-  --theme-background-theme: #0e0e0e !important;
-  --theme-background-color: #131313 !important;
+  --theme-background-theme: #0b0e15 !important;
+  --theme-background-color: #11131a !important;
 
   /* ELEMENT BOXES - Darker/Distinguishable Containers */
-  --theme-primary-010: #0e0e0e !important;
-  --theme-primary-020: #1b1b1b !important;
-  --theme-primary-030: #1f1f1f !important;
-  --theme-primary-040: #2a2a2a !important;
-  --theme-primary-050: #353535 !important;
+  --theme-primary-010: #0b0e15 !important;
+  --theme-primary-020: #191b22 !important;
+  --theme-primary-030: #1d2026 !important;
+  --theme-primary-040: #272a31 !important;
+  --theme-primary-050: #32353c !important;
 
   /* TEXT - Dynamic Contrast */
-  --theme-primary-text-010: #e2e2e2 !important;
-  --theme-primary-text-020: #c6c6c6 !important;
-  --theme-primary-text-030: #919191 !important;
+  --theme-primary-text-010: #e1e2eb !important;
+  --theme-primary-text-020: #c2c6d5 !important;
+  --theme-primary-text-030: #8c909f !important;
 
   /* ACCENT - For Icons & Active Elements */
-  --theme-accent: #f0c048 !important;
-  --theme-accent-text: #3f2e00 !important;
+  --theme-accent: #adc6ff !important;
+  --theme-accent-text: #002e69 !important;
 
   /* ICON & FORM OVERRIDES */
-  --form-icon: #f0c048 !important;
-  --form-icon-checked: #f0c048 !important;
-  --icon-color: #f0c048 !important;
-  --form-icon-symbol: #3f2e00 !important;
-  --form-group-border: #474747 !important;
+  --form-icon: #adc6ff !important;
+  --form-icon-checked: #adc6ff !important;
+  --icon-color: #adc6ff !important;
+  --form-icon-symbol: #002e69 !important;
+  --form-group-border: #424753 !important;
 
   /* MISC UI Polish */
   --theme-shadow: #000000 !important;

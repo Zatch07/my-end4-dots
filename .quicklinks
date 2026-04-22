@@ -1,7 +1,12 @@
 Google | Open Google | xdg-open "https://google.com"
 ChatGPT | Open ChatGPT | xdg-open "https://chatgpt.com"
-Restart UI | Reload shell | quickshell -c ii & quickshell -p ~/.config/skwd
+Restart UI | Reload shell | hyprctl reload && touch ~/.config/quickshell/ii/shell.qml
 Update System | Arch update | yay -Syu
 Vesktop | Open Discord | vesktop
 Lockscreen | Change lockscreen theme | ~/.config/qylock/change_theme.sh
 Cursor | Change system cursor theme | ~/.local/bin/cursor-picker
+Workspaces Pacman | Switch to the Pacman-styled QuickShell UI | ~/.local/bin/qs-theme-switch pacman
+Workspaces Original | Switch to the Original QuickShell UI | ~/.local/bin/qs-theme-switch original
+Workspaces Latest | Switch to the Latest (April 22) QuickShell UI | ~/.local/bin/qs-theme-switch latest
+Workspaces Material You | Switch to the Material You QuickShell UI | ~/.local/bin/qs-theme-switch material-you
+Settings | QuickShell Settings | qs -p ~/.config/quickshell/ii/settings.qml

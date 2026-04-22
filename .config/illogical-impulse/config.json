@@ -1,16 +1,27 @@
 {
   "ai": {
-    "extraModels": [
+    "models": [
       {
-        "api_format": "openai",
-        "description": "This is a custom model. Edit the config to add more! | Anyway, this is DeepSeek R1 Distill LLaMA 70B",
-        "endpoint": "https://openrouter.ai/api/v1/chat/completions",
-        "homepage": "https://openrouter.ai/deepseek/deepseek-r1-distill-llama-70b:free",
-        "icon": "spark-symbolic",
-        "key_get_link": "https://openrouter.ai/settings/keys",
-        "key_id": "openrouter",
-        "model": "deepseek/deepseek-r1-distill-llama-70b:free",
-        "name": "Custom: DS R1 Dstl. LLaMA 70B",
+        "openrouter": [
+          {
+            "modelProvider": "google",
+            "title": "Gemini 2.5 Flash",
+            "value": "gemini-2.5-flash"
+          }
+        ]
+      },
+      {
+        "google": []
+      }
+    ],
+    "otherModels": [
+      {
+        "api_format": "mistral",
+        "endpoint": "https://api.mistral.ai/v1/chat/completions",
+        "icon": "mistral-symbolic",
+        "key_id": "mistral",
+        "model": "mistral-medium-2505",
+        "name": "Mistral Medium",
         "requires_key": true
       }
     ],
@@ -18,9 +29,12 @@
     "tool": "functions"
   },
   "appearance": {
+    "customColorSchemes": [],
+    "defaultBorderRadius": 18,
     "extraBackgroundTint": true,
     "fakeScreenRounding": 0,
     "fonts": {
+      "enableCustom": false,
       "expressive": "Space Grotesk",
       "iconNerd": "JetBrains Mono NF",
       "main": "Google Sans Flex",
@@ -31,8 +45,10 @@
     },
     "palette": {
       "accentColor": "",
-      "type": "scheme-rainbow"
+      "type": "scheme-content"
     },
+    "sharpMode": false,
+    "toggleWindowRounding": true,
     "transparency": {
       "automatic": true,
       "backgroundTransparency": 0.11,
@@ -49,7 +65,8 @@
         "harmony": 0,
         "termFgBoost": 0
       }
-    }
+    },
+    "wrappedFrameThickness": 10
   },
   "apps": {
     "bluetooth": "kcmshell6 kcm_bluetooth",
@@ -70,7 +87,24 @@
     }
   },
   "background": {
+    "animateWallpaperChanges": true,
+    "enable": true,
     "hideWhenFullscreen": true,
+    "mediaMode": {
+      "backgroundAnimation": {
+        "enable": true,
+        "speedScale": 10
+      },
+      "backgroundBlurRadius": 120,
+      "backgroundOpacity": 50,
+      "backgroundShape": "Square",
+      "changeShellColor": true,
+      "enableBackgroundAnimation": true,
+      "syllable": {
+        "textHighlightStyle": 0
+      },
+      "togglePerMonitor": false
+    },
     "parallax": {
       "autoVertical": false,
       "enableSidebar": true,
@@ -79,12 +113,15 @@
       "widgetsFactor": 1.2,
       "workspaceZoom": 1.1
     },
-    "thumbnailPath": "/home/zatch/Pictures/Wallpapers/WallpaperEngine/Boy with the Lightning [WE-2333923785]/preview.jpg",
-    "wallpaperPath": "/home/zatch/Pictures/Wallpapers/WallpaperEngine/Boy with the Lightning [WE-2333923785]",
+    "thumbnailPath": "/home/zatch/Pictures/Wallpapers/WallpaperEngine/Hunt Showdown Official [WE-3544229853]/preview.jpg",
+    "wallpaperPath": "/home/zatch/Pictures/Wallpapers/WallpaperEngine/Hunt Showdown Official [WE-3544229853]",
     "widgets": {
       "clock": {
         "cookie": {
           "aiStyling": false,
+          "aiStylingModel": "gemini",
+          "backgroundShape": "Arch",
+          "backgroundStyle": "cookie",
           "constantlyRotate": false,
           "dateInClock": true,
           "dateStyle": "border",
@@ -94,12 +131,12 @@
           "minuteHandStyle": "medium",
           "secondHandStyle": "dot",
           "sides": 15,
-          "timeIndicators": false,
-          "useSineCookie": true
+          "timeIndicators": false
         },
         "digital": {
           "adaptiveAlignment": true,
           "animateChange": true,
+          "colorful": false,
           "font": {
             "family": "Google Sans Flex",
             "roundness": 0,
@@ -107,6 +144,7 @@
             "weight": 350,
             "width": 100
           },
+          "showColon": true,
           "showDate": false,
           "vertical": false
         },
@@ -122,6 +160,27 @@
         "x": 2266.5,
         "y": 1132.5
       },
+      "media": {
+        "backgroundShape": "Circle",
+        "enable": true,
+        "glow": {
+          "brightness": 10,
+          "enable": true
+        },
+        "hideAllButtons": false,
+        "placementStrategy": "free",
+        "showPreviousToggle": true,
+        "tintArtCover": false,
+        "useAlbumColors": true,
+        "visualizer": {
+          "blur": 1,
+          "enable": false,
+          "opacity": 0.15,
+          "smoothing": 2
+        },
+        "x": 800,
+        "y": 100
+      },
       "weather": {
         "enable": false,
         "placementStrategy": "free",
@@ -131,6 +190,9 @@
     }
   },
   "bar": {
+    "activeWindow": {
+      "fixedSize": false
+    },
     "autoHide": {
       "enable": false,
       "hoverRegionWidth": 2,
@@ -140,26 +202,84 @@
         "enable": true
       }
     },
-    "borderless": false,
+    "barBackgroundStyle": 1,
+    "barGroupStyle": 0,
     "bottom": true,
     "cornerStyle": 2,
     "floatStyleShadow": true,
     "indicators": {
       "notifications": {
         "showUnreadCount": false
+      },
+      "record": {
+        "minimal": false
       }
     },
+    "layouts": {
+      "center": [
+        {
+          "id": "music_player"
+        },
+        {
+          "centered": true,
+          "id": "workspaces"
+        },
+        {
+          "id": "system_monitor"
+        }
+      ],
+      "left": [
+        {
+          "id": "policies_panel_button"
+        },
+        {
+          "id": "active_window"
+        }
+      ],
+      "right": [
+        {
+          "id": "clock"
+        },
+        {
+          "id": "system_tray",
+          "visible": true
+        },
+        {
+          "id": "dashboard_panel_button"
+        }
+      ]
+    },
+    "mediaPlayer": {
+      "artwork": {
+        "enable": false
+      },
+      "customSize": 250,
+      "lyrics": {
+        "customSize": 400,
+        "enable": false,
+        "style": "scroller",
+        "useGradientMask": true
+      },
+      "maxSize": 400,
+      "useFixedSize": false
+    },
     "resources": {
-      "alwaysShowCpu": true,
-      "alwaysShowSwap": true,
       "cpuWarningThreshold": 90,
       "memoryWarningThreshold": 95,
       "swapWarningThreshold": 85
     },
     "screenList": [],
-    "showBackground": true,
+    "sizes": {
+      "height": 40,
+      "width": 46
+    },
+    "timers": {
+      "showPomodoro": true,
+      "showStopwatch": true
+    },
     "tooltips": {
-      "clickToShow": false
+      "clickToShow": false,
+      "compactPopups": false
     },
     "topLeftIcon": "spark",
     "utilButtons": {
@@ -181,13 +301,21 @@
       "useUSCS": false
     },
     "workspaces": {
+      "activeIndicatorOpacity": 100,
       "alwaysShowNumbers": true,
+      "dynamicWorkspaces": false,
+      "maxWindowCount": 1,
       "monochromeIcons": true,
       "numberMap": [],
       "showAppIcons": false,
       "showNumberDelay": 300,
       "shown": 10,
-      "useNerdFont": false
+      "useNerdFont": false,
+      "useWorkspaceMap": true,
+      "workspaceMap": [
+        0,
+        10
+      ]
     }
   },
   "battery": {
@@ -195,12 +323,14 @@
     "critical": 5,
     "full": 101,
     "low": 20,
+    "style": "default",
     "suspend": 3
   },
   "calendar": {
     "locale": "en-GB"
   },
   "cheatsheet": {
+    "filterUnbinds": false,
     "fontSize": {
       "comment": 12,
       "key": 12
@@ -219,20 +349,29 @@
     "code": "0;P;d;1;0l;10;0o;2;1b;0"
   },
   "dock": {
+    "dimInactiveIcons": false,
     "enable": false,
+    "enableMediaWidget": false,
+    "enablePreview": true,
     "height": 60,
     "hoverRegionHeight": 2,
-    "hoverToReveal": true,
+    "hoverToReveal": false,
     "ignoredAppRegexes": [],
+    "isolateMonitors": false,
     "monochromeIcons": true,
     "pinnedApps": [
       "org.kde.dolphin",
       "kitty"
     ],
-    "pinnedOnStartup": false
+    "pinnedFiles": [],
+    "pinnedOnStartup": false,
+    "position": "bottom"
   },
   "hacks": {
     "arbitraryRaceConditionDelay": 20
+  },
+  "hyprland": {
+    "defaultHyprlandLayout": "dwindle"
   },
   "interactions": {
     "deadPixelWorkaround": {
@@ -287,8 +426,14 @@
     "showLockedText": false,
     "useHyprlock": false
   },
+  "lyricsService": {
+    "enable": true,
+    "enableGenius": true,
+    "enableLrclib": true
+  },
   "media": {
-    "filterDuplicatePlayers": true
+    "filterDuplicatePlayers": true,
+    "priorityPlayer": ""
   },
   "musicRecognition": {
     "interval": 4,
@@ -314,6 +459,16 @@
       "imageSource": "https://media.tenor.com/_UiaK1bSSRAAAAAi/ocmz-111.gif",
       "scale": 0.5
     },
+    "media": {
+      "backgroundOpacityPercentage": 100,
+      "lyricSize": 19,
+      "showSlider": true,
+      "useGradientMask": true
+    },
+    "notes": {
+      "allowEditingIcon": true,
+      "showTabs": true
+    },
     "openingZoomAnimation": true
   },
   "overview": {
@@ -323,11 +478,25 @@
     "orderBottomUp": true,
     "orderRightLeft": false,
     "rows": 3,
-    "scale": 0.15
+    "scale": 0.15,
+    "scrollingStyle": {
+      "backgroundStyle": "blur",
+      "dimPercentage": 50,
+      "zoomStyle": "in"
+    },
+    "showIcons": true,
+    "showOpeningAnimation": true,
+    "useWorkspaceMap": true,
+    "workspaceMap": [
+      0,
+      10
+    ]
   },
   "panelFamily": "ii",
   "policies": {
     "ai": 1,
+    "translator": 0,
+    "wallpapers": 1,
     "weeb": 0
   },
   "regionSelector": {
@@ -341,6 +510,7 @@
     "rect": {
       "showAimLines": true
     },
+    "showOnlyOnFocusedMonitor": false,
     "targetRegions": {
       "content": true,
       "contentRegionOpacity": 0.8,
@@ -362,11 +532,13 @@
     "savePath": ""
   },
   "search": {
+    "blurFileSearchResultPreviews": false,
     "engineBaseUrl": "https://www.google.com/search?q=",
     "excludedSites": [
       "quora.com",
       "facebook.com"
     ],
+    "fileSearchDirectory": "/home",
     "imageSearch": {
       "imageSearchEngineBaseUrl": "https://lens.google.com/uploadbyurl?url=",
       "useCircleSelection": false
@@ -377,6 +549,7 @@
       "app": ">",
       "clipboard": ";",
       "emojis": ":",
+      "fileSearch": ",",
       "math": "=",
       "shellCommand": "$",
       "showDefaultActionsWithoutPrefix": true,
@@ -386,6 +559,7 @@
   },
   "sidebar": {
     "ai": {
+      "showProviderAndModelButtons": true,
       "textFadeIn": false
     },
     "booru": {
@@ -408,9 +582,11 @@
       "visualize": false
     },
     "keepRightSidebarLoaded": true,
+    "position": "default",
     "quickSliders": {
       "enable": true,
       "showBrightness": false,
+      "showGamma": true,
       "showMic": true,
       "showVolume": true
     },
@@ -479,7 +655,9 @@
   "time": {
     "dateFormat": "ddd, dd/MM",
     "dateWithYearFormat": "dd/MM/yyyy",
+    "firstDayOfWeek": 6,
     "format": "h:mm AP",
+    "longDateFormat": "dd/MM/yyyy",
     "pomodoro": {
       "breakTime": 300,
       "cyclesBeforeLongBreak": 4,
@@ -491,18 +669,21 @@
   },
   "tray": {
     "filterPassive": true,
-    "invertPinnedItems": true,
-    "monochromeIcons": true,
+    "invertPinnedItems": false,
+    "monochromeIcons": false,
     "pinnedItems": [
       "Fcitx"
     ],
     "showItemId": false
   },
+  "update": {
+    "scriptFlags": "--no-backup --no-confirm",
+    "scriptPath": ""
+  },
   "updates": {
     "adviseUpdateThreshold": 75,
     "checkInterval": 120,
     "enableCheck": true,
-    "packageManager": "yay",
     "stronglyAdviseUpdateThreshold": 200
   },
   "waffles": {
@@ -540,7 +721,23 @@
     }
   },
   "wallpaperSelector": {
+    "directories": [
+      {
+        "icon": "wallpaper",
+        "name": "Wallpapers",
+        "path": "file:///home/zatch/Pictures/Wallpapers"
+      }
+    ],
     "useSystemFileDialog": false
+  },
+  "wallpapers": {
+    "paths": {
+      "download": "/home/zatch/Pictures/Wallpapers",
+      "nsfw": "/home/zatch/Pictures/Wallpapers/NSFW"
+    },
+    "service": "wallhaven",
+    "showAnimeResults": false,
+    "sort": "favourites"
   },
   "windows": {
     "centerTitle": true,
